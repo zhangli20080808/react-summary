@@ -35,7 +35,7 @@ export class Component {
     }
 
     setState() {
-        console.log('1ss')
+        console.log('1s11s')
     }
 
     forceUpdate() {
