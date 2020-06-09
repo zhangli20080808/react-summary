@@ -35,6 +35,9 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "files": [
+    "src"
+  ],
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "babel-plugin-import": "^1.12.0",
