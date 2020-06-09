@@ -103,3 +103,18 @@ export function compose(...funcs) {
   // 聚合函数数组为一个函数 [fn1,fn2] => fn2(fn1())
   return funcs.reduce((left, right) => (...args) => right(left(...args)));
 }
+
+
+
+// 添加一个bindActionCreators能转换actionCreator为派发函数，redux.js
+function bindActionCreator(creator, dispatch) {
+  return (...args) => dispatch(creator(...args));
+}
+
+export function bindActionCreators(creators, dispatch) {
+  return Object.keys(creators).reduce((ret, item) => {
+    ret[item] = bindActionCreator(creators[item], dispatch);
+    return ret;
+  }, {});
+}
+
