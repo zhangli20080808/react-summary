@@ -35,6 +35,7 @@ export class Component {
     }
 
     setState() {
+        console.log('1')
     }
 
     forceUpdate() {

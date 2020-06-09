@@ -26,11 +26,6 @@
       "commit-msg": "commitlint -e $GIT_PARAMS"
     }
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
