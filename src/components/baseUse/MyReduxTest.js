@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { createStore, applyMiddleware } from "../../store/kredux2"
+import React, {Component} from "react";
+import {createStore, applyMiddleware} from "../../store/kredux"
 
-const counterReducer = function(state = 0, action) {
+const counterReducer = function (state = 2, action) {
   const num = action.payload || 1;
   switch (action.type) {
     case "add":
@@ -16,7 +16,8 @@ const counterReducer = function(state = 0, action) {
 // 自定义中间件
 function logger() {
   // 返回真正中间件任务执行函数
-  return dispatch => action => {
+  return (dispatch) => action => {
+    console.log(dispatch,action)
     // 执行中间件任务
     console.log(action.type + "执行了！！！");
 
@@ -24,6 +25,7 @@ function logger() {
     return dispatch(action);
   };
 }
+
 // thunk实现
 // const thunk = ({getState}) => dispatch => action => {
 //     // thunk逻辑：处理函数action
@@ -34,22 +36,24 @@ function logger() {
 // 	return dispatch(action)
 // }
 
-const store = createStore(counterReducer);
+const store = createStore(counterReducer, applyMiddleware(logger));
 
 export default class MyReduxTest extends Component {
   componentDidMount() {
     store.subscribe(() => this.forceUpdate());
   }
+
   render() {
     return (
       <div>
         {store.getState()}
-        <button onClick={() => store.dispatch({ type: "add" })}>+</button>
-        <button onClick={() => store.dispatch(function(){
-            setTimeout(() => {
-                store.dispatch({ type: "add" })
-            }, 1000);
-        })}>+</button>
+        <button onClick={() => store.dispatch({type: "add"})}>+</button>
+        <button onClick={() => store.dispatch(function () {
+          setTimeout(() => {
+            store.dispatch({type: "add"})
+          }, 1000);
+        })}>+
+        </button>
       </div>
     );
   }

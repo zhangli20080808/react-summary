@@ -33,18 +33,22 @@ export const connect = (
   };
 };
 
+//Provider 是我们的父组件  接受一个 store  最后将
 export class Provider extends React.Component {
+  //定义一个上下文
   static childContextTypes = {
     store: PropTypes.object,
   };
   getChildContext() {
+    //上下文会把我们的store传进去
     return { store: this.store };
   }
   constructor(props, context) {
-    super(props, context);
+    super(props, context);  // this.store 通过上下文 传递下去了 在子组件中就能拿到store了
     this.store = props.store;
   }
   render() {
+    //把孩子渲染出来  渲染到肚子里面
     return this.props.children;
   }
 }

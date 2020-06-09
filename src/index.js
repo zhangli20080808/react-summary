@@ -1,71 +1,71 @@
-// import React from "react";
+import React from "react";
 // import React, {Component} from "./kreact";
-// import ReactDOM from "react-dom";
+import ReactDOM from "react-dom";
 // import ReactDOM from "./kreact-dom";
 
-import React from './kkreact'
-import {render} from './kkreact/ReactDOM'
-// import App from "./App";
-// import store from './store';
-// import {Provider} from 'react-redux'
+// import React from './kkreact'
+// import {render} from './kkreact/ReactDOM'
+import App from "./App";
+import store from './store';
+import {Provider} from 'react-redux'
 // console.log(jsx);
 
-// ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
-class ClassCmp extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            msg: 'something'
-        }
-    }
-
-    componentDidMount() {
-        this.setState({msg: 'dong~~~'})
-    }
-
-    onClick = () => {
-        console.log('1')
-        this.setState({msg: 'mua~~~'})
-    }
-
-    render() {
-        return (
-            <div className='app' onClick={this.onClick}>
-                Hello {this.props.name}
-                {this.state.msg}
-            </div>
-        )
-        //build后
-        return React.createElement(
-            "div",
-            {"class": "app"},
-            "Hello ",
-            this.props.name
-        );
-    }
-}
-
-function FuncCmp(props) {
-    return (
-        <div>name: {props.name}</div>
-    )
-    //build后
-    return React.createElement(
-        "div",
-        null,
-        "name: ",
-        props.name
-    );
-}
-
-const jsx = (
-    <div><p>我是内容</p> <FuncCmp name="我是function组件"/>
-        <ClassCmp name="我是class组件"/>
-
-    </div>
-);
+ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+// class ClassCmp extends React.Component {
+//
+//     constructor(props) {
+//         super(props);
+//
+//         this.state = {
+//             msg: 'something'
+//         }
+//     }
+//
+//     componentDidMount() {
+//         this.setState({msg: 'dong~~~'})
+//     }
+//
+//     onClick = () => {
+//         console.log('1')
+//         this.setState({msg: 'mua~~~'})
+//     }
+//
+//     render() {
+//         return (
+//             <div className='app' onClick={this.onClick}>
+//                 Hello {this.props.name}
+//                 {this.state.msg}
+//             </div>
+//         )
+//         //build后
+//         return React.createElement(
+//             "div",
+//             {"class": "app"},
+//             "Hello ",
+//             this.props.name
+//         );
+//     }
+// }
+//
+// function FuncCmp(props) {
+//     return (
+//         <div>name: {props.name}</div>
+//     )
+//     //build后
+//     return React.createElement(
+//         "div",
+//         null,
+//         "name: ",
+//         props.name
+//     );
+// }
+//
+// const jsx = (
+//     <div><p>我是内容</p> <FuncCmp name="我是function组件"/>
+//         <ClassCmp name="我是class组件"/>
+//
+//     </div>
+// );
 
 // const jsx = React.createElement(
 //     "div",
@@ -81,10 +81,10 @@ const jsx = (
 //         name: "我是class组件"
 //     })
 // );
-console.log(jsx)
+// console.log(jsx)
 
 
-render(jsx, document.getElementById('root'))
+// render(jsx, document.getElementById('root'))
 
 
 /*

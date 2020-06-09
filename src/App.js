@@ -22,7 +22,7 @@ import BaseUse from './components/baseUse';
 // import Dialog, { Dialog2 } from './components/baseUse/Dialog';
 // import Tree from './components/Tree';
 // import CommentList from './components/CommentList';
-// import ReduxTest from './components/ReduxTest';
+// import ReduxTest from './components/baseUse/ReduxTest';
 import MyReduxTest from './components/baseUse/MyReduxTest';
 // import RouterTest from './components/RouterTest';
 // import MyRouterTest from './components/MyRouterTest';
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div>
-      <BaseUse />
+      {/*<BaseUse />*/}
       {/* <AdvancedUse/> */}
       {/* <ReduxUse/> */}
       {/* <TodoList /> */}
@@ -75,7 +75,7 @@ function App() {
       </Dialog2> */}
       {/* <Tree></Tree> */}
       {/* <CommentList></CommentList> */}
-      {/* <ReduxTest></ReduxTest> */}
+      {/* <ReduxTest></ReduxTest>*/}
       <MyReduxTest></MyReduxTest>
       {/* <RouterTest></RouterTest> */}
       {/* <MyRouterTest></MyRouterTest> */}
