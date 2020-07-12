@@ -8,6 +8,7 @@ export default class CommentList extends Component {
       comments: []
     };
   }
+
   componentDidMount() {
     setInterval(() => {
       this.setState({

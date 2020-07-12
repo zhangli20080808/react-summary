@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react'
 import BaseUse from './components/baseUse';
 // import AdvancedUse from './components/advancedUse'
 // import ReduxUse from './components/reduxUse'
@@ -23,8 +23,8 @@ import BaseUse from './components/baseUse';
 // import Tree from './components/Tree';
 // import CommentList from './components/CommentList';
 // import ReduxTest from './components/baseUse/ReduxTest';
-import MyReduxTest from './components/baseUse/MyReduxTest';
-// import RouterTest from './components/RouterTest';
+// import MyReduxTest from './components/baseUse/MyReduxTest';
+// import RouterTest from './components/baseUse/RouterTest';
 // import MyRouterTest from './components/MyRouterTest';
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div>
-      {/*<BaseUse />*/}
+      <BaseUse />
       {/* <AdvancedUse/> */}
       {/* <ReduxUse/> */}
       {/* <TodoList /> */}
@@ -76,8 +76,8 @@ function App() {
       {/* <Tree></Tree> */}
       {/* <CommentList></CommentList> */}
       {/* <ReduxTest></ReduxTest>*/}
-      <MyReduxTest></MyReduxTest>
-      {/* <RouterTest></RouterTest> */}
+      {/*<MyReduxTest></MyReduxTest>*/}
+      {/* <RouterTest></RouterTest>*/}
       {/* <MyRouterTest></MyRouterTest> */}
       {/* {time && <Lifecycle time={time} />} */}
     </div>

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 // import JSXBaseDemo from './JSXBaseDemo'
 // import ConditionDemo from './ConditionDemo'
-// import ListDemo from './ListDemo'
+import ListDemo from './ListDemo'
 // import EventDemo from './EventDemo'
 // import FormDemo from './FormDemo'
 // import PropsDemo from './PropsDemo';
@@ -10,22 +10,25 @@ import React from 'react';
 // import StateDemo2 from './msgState'
 
 class BaseUseDemo extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       counter: 0,
-    };
+    }
   }
-  componentDidMount() {
- 
+
+  componentDidMount () {
+    console.log('我是父组件')
   }
+
   // 0 0 0 0 1 2 3 3 3
-  render() {
+  render () {
+    console.log('父组件render')
     return (
       <div>
         {/* <JSXBaseDemo/> */}
         {/* <ConditionDemo/> */}
-        {/* <ListDemo/> */}
+        <ListDemo/>
         {/* <EventDemo/> */}
         {/* <FormDemo/> */}
         {/* <PropsDemo /> */}
@@ -33,11 +36,11 @@ class BaseUseDemo extends React.Component {
         {/* <StateDemo1/> */}
         {/* <StateDemo2/> */}
       </div>
-    );
+    )
   }
 }
 
-export default BaseUseDemo;
+export default BaseUseDemo
 
 // React 组件生命周期图示
 // http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/

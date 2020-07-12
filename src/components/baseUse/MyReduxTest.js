@@ -14,7 +14,7 @@ const counterReducer = function (state = 2, action) {
 };
 
 // 自定义中间件
-function logger() {
+function logger({dispatch,getState}) {
   // 返回真正中间件任务执行函数
   return (dispatch) => action => {
     console.log(dispatch,action)
@@ -27,7 +27,7 @@ function logger() {
 }
 
 // thunk实现
-// const thunk = ({getState}) => dispatch => action => {
+// const thunk = ({dispatch,getState}) => dispatch => action => {
 //     // thunk逻辑：处理函数action
 // 	if (typeof action == 'function') {
 // 		return action(dispatch, getState)

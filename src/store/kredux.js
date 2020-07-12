@@ -11,41 +11,41 @@
 //   }
 // };
 
-export function createStore(reducer, enhancer) {
+export function createStore (reducer, enhancer) {
   // 如果存在enhancer 也就是 applyMiddleware  让createStore变强 enhancer(createStore)返回函数
   if (enhancer) {
-    return enhancer(createStore)(reducer);
+    return enhancer(createStore)(reducer)
   }
 
-  let currentState = undefined;
-  const currentListeners = []; // 回调函数数组
+  let currentState = undefined
+  const currentListeners = [] // 回调函数数组
 
-  function getState() {
-    return currentState;
+  function getState () {
+    return currentState
   }
 
   // 更新状态
-  function dispatch(action) {
+  function dispatch (action) {
     //{ type: "add" })
     // 修改
-    currentState = reducer(currentState, action);
+    currentState = reducer(currentState, action)
     // 变更通知
-    currentListeners.forEach(v => v());
-    return action;
+    currentListeners.forEach(v => v())
+    return action
   }
 
-  function subscribe(cb) {
-    currentListeners.push(cb);
+  function subscribe (cb) {
+    currentListeners.push(cb)
   }
 
   // 初始化状态
-  dispatch({type: "@IMOOC/KKB-REDUX"});
+  dispatch({ type: '@IMOOC/KKB-REDUX' })
 
   return {
     getState,
     dispatch,
     subscribe
-  };
+  }
 }
 
 // 高阶函数 变成 superDispatch 把中间件的所有任务都执行完 才会执行最终的dispatch
@@ -66,55 +66,56 @@ function logger() {
   };
 }
 * */
-export function applyMiddleware(...middlewares) {
+export function applyMiddleware (...middlewares) {
   //middlewares logger thunk
   return createStore => (...args) => {
     // 完成之前createStore工作
-    const store = createStore(...args);
+    const store = createStore(...args)
     // 原先dispatch
-    let dispatch = store.dispatch;
+    let dispatch = store.dispatch
     // 传递给中间件函数的参数
     const midApi = {
       getState: store.getState,
       dispatch: (...args) => dispatch(...args)
-    };
+    }
     // 将来中间件函数签名如下： funtion ({}) {}
     //[fn1(dispatch),fn2(dispatch)] => fn(diaptch)
-    const chain = middlewares.map(mw => mw(midApi));
-    console.log(chain,'chain')
+    const chain = middlewares.map(mw => mw(midApi))
+    console.log(chain, 'chain')
     // 强化dispatch,让他可以按顺序执行中间件函数
-    console.log(store.dispatch,'action')
-    dispatch = compose(...chain)(store.dispatch);
+    console.log(store.dispatch, 'action')
+    dispatch = compose(...chain)(store.dispatch)
     // 返回全新store，仅更新强化过的dispatch函数
     return {
       ...store,
       dispatch
-    };
-  };
+    }
+  }
 }
 
-export function compose(...funcs) {
+export function compose (...funcs) {
   if (funcs.length === 0) {
-    return arg => arg;
+    return arg => arg
   }
   if (funcs.length === 1) {
-    return funcs[0];
+    return funcs[0]
   }
   // 聚合函数数组为一个函数 [fn1,fn2] => fn2(fn1())
-  return funcs.reduce((left, right) => (...args) => right(left(...args)));
+  return funcs.reduce((left, right) => (...args) => right(left(...args)))
 }
-
-
 
 // 添加一个bindActionCreators能转换actionCreator为派发函数，redux.js
-function bindActionCreator(creator, dispatch) {
-  return (...args) => dispatch(creator(...args));
+function bindActionCreator (creator, dispatch) {
+  // ()=>({type:'add'}) -- creator
+  return (...args) => dispatch(creator(...args))
 }
 
-export function bindActionCreators(creators, dispatch) {
+export function bindActionCreators (creators, dispatch) {
+  // {add:()=>({type:'add'})}  从上面变下面
+  // {add:(...args) => dispatch(creator(...args))} //执行dispatch {type:'add'}
   return Object.keys(creators).reduce((ret, item) => {
-    ret[item] = bindActionCreator(creators[item], dispatch);
-    return ret;
-  }, {});
+    ret[item] = bindActionCreator(creators[item], dispatch)
+    return ret
+  }, {})
 }
 
