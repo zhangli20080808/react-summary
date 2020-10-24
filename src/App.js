@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component } from 'react'
-import BaseUse from './components/baseUse';
+// import BaseUse from './components/baseUse';
 // import AdvancedUse from './components/advancedUse'
 // import ReduxUse from './components/reduxUse'
 // import TodoList from './components/TodoLIst';
@@ -27,6 +27,9 @@ import BaseUse from './components/baseUse';
 // import RouterTest from './components/baseUse/RouterTest';
 // import MyRouterTest from './components/MyRouterTest';
 
+import TestHook from './components/hook';
+
+
 function App() {
   const [time, setTime] = useState('test');
   useEffect(() => {
@@ -40,7 +43,8 @@ function App() {
 
   return (
     <div>
-      <BaseUse />
+      <TestHook/>
+      {/*<BaseUse />*/}
       {/* <AdvancedUse/> */}
       {/* <ReduxUse/> */}
       {/* <TodoList /> */}

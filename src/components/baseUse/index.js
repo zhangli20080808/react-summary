@@ -1,7 +1,7 @@
 import React from 'react'
 // import JSXBaseDemo from './JSXBaseDemo'
 // import ConditionDemo from './ConditionDemo'
-import ListDemo from './ListDemo'
+// import ListDemo from './ListDemo'
 // import EventDemo from './EventDemo'
 // import FormDemo from './FormDemo'
 // import PropsDemo from './PropsDemo';
@@ -28,7 +28,7 @@ class BaseUseDemo extends React.Component {
       <div>
         {/* <JSXBaseDemo/> */}
         {/* <ConditionDemo/> */}
-        <ListDemo/>
+        {/*<ListDemo/>*/}
         {/* <EventDemo/> */}
         {/* <FormDemo/> */}
         {/* <PropsDemo /> */}
