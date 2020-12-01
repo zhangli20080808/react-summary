@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useRef, memo, useMemo, useReducer } from 'react'
+import React, { useState, useCallback, useRef, memo, useMemo, useReducer, useContext } from 'react'
+
+let MyContent = React.createContext()
 
 //解决的问题
 //将组件间相互关联的部分拆分成更小的函数
@@ -33,7 +35,7 @@ function count () {
   </div>
 }
 
-//每次渲染都是独立的闭包
+//每次渲染都是独立的闭包  就是说每次渲染 用的变量都不是同一个
 //每一次渲染都有他自己的props和state 每一次渲染都有他自己的事件处理函数
 // 我们的组件函数每次渲染都会被调用 但是每一次调用中number值都是常量 并且他被赋予了当前渲染中的状态值
 // 在单次渲染的范围内 props和stat始终保持不变
@@ -155,7 +157,7 @@ function useState2 (initialState) {
   return [state, setState]
 }
 
-// useState 是依赖于 useReducer的
+// useState 是依赖于 useReducer的  state逻辑复杂并且包含多个子值 或者下一个state依赖之前的state
 let initialState = { number: 0 }
 const INCREASE = 'INCREASE'
 const DECREASE = 'DECREASE'
@@ -183,8 +185,41 @@ function demo8 () {
 
     <button onClick={() => xxx({ number: state.number + 1 })}>+</button>
     <button onClick={() => xxx({ number: state.number - 1 })}>-</button>
-
   </div>
 }
 
-export default demo8
+function Counter () {
+  let { state, setState } = useContext(MyContent)
+  //以前
+  // return (
+  //   <div>
+  //     <MyContent.Consumer>
+  //       {
+  //         value => (
+  //           <div>{value.state.number}
+  //             <button onClick={() => value.setState({ number: value.state.number + 1 })}>+</button>
+  //           </div>
+  //         )
+  //       }
+  //     </MyContent.Consumer>
+  //   </div>
+  // )
+
+  return (
+    <div>{state.number}
+      <button onClick={() => setState({ number: state.number + 1 })}>+</button>
+    </div>
+  )
+
+}
+
+function demo9 () {
+  const [state, setState] = useState({ number: 10 })
+  return (
+    <MyContent.Provider value={{ state, setState }}>
+      <Counter/>
+    </MyContent.Provider>
+  )
+}
+
+export default demo9

@@ -19,6 +19,13 @@ class BaseUseDemo extends React.Component {
 
   componentDidMount () {
     console.log('我是父组件')
+   this.timer = setInterval(()=>{
+     console.log('zl')
+   },1000)
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.timer)
   }
 
   // 0 0 0 0 1 2 3 3 3
@@ -35,6 +42,7 @@ class BaseUseDemo extends React.Component {
         {/* <StateDemo/> */}
         {/* <StateDemo1/> */}
         {/* <StateDemo2/> */}
+        <button onClick={this.handleClick}>测试</button>
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Component } from 'react'
-// import BaseUse from './components/baseUse';
+import BaseUse from './components/baseUse';
+import Codemirror from './components/codemirror';
 // import AdvancedUse from './components/advancedUse'
 // import ReduxUse from './components/reduxUse'
 // import TodoList from './components/TodoLIst';
@@ -28,6 +29,8 @@ import React, { useState, useEffect, Component } from 'react'
 // import MyRouterTest from './components/MyRouterTest';
 
 import TestHook from './components/hook';
+import EffectHook from './components/hook/effect';
+
 
 
 function App() {
@@ -43,8 +46,10 @@ function App() {
 
   return (
     <div>
-      <TestHook/>
-      {/*<BaseUse />*/}
+      {/*<TestHook/>*/}
+      <EffectHook/>
+      <BaseUse />
+      <Codemirror/>
       {/* <AdvancedUse/> */}
       {/* <ReduxUse/> */}
       {/* <TodoList /> */}

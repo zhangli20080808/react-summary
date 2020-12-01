@@ -39,3 +39,4 @@ export default class Lifecycle extends Component {
     return <div>生命周期探究 {this.props.time}</div>;
   }
 }
+
