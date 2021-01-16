@@ -1,18 +1,22 @@
-import React from "react";
+import React from 'react'
 // import React, {Component} from "./kreact";
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom'
 // import ReactDOM from "./kreact-dom";
 
 // import React from './kkreact'
 // import {render} from './kkreact/ReactDOM'
-import App from "./App";
-import store from './store';
-import {Provider} from 'react-redux'
+import App from './App'
+// import store from './store';
+import { Provider } from 'react-redux'
+import mobx from './mobx/mobx'
+
 // console.log(jsx);
 
-export function render(){
-  ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+export function render () {
+  ReactDOM.render(<App title="ok"/>, document.getElementById('root'))
+  // ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
 }
+
 render()
 
 // class ClassCmp extends React.Component {
@@ -87,9 +91,7 @@ render()
 // );
 // console.log(jsx)
 
-
 // render(jsx, document.getElementById('root'))
-
 
 /*
 * 三个大接口  React.createElement() React.Component React.render

@@ -4,37 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vagrant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/useReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/useReducer实现useState.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/useState.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/useState2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/截屏2021-01-16 20.29.47.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/链表结构实现useState.js" afterDir="false" />
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="hooks各种实现总结">
+      <change afterPath="$PROJECT_DIR$/src/mobx/autorun.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mobx/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mobx/mobx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mobx/observable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mobx/reaction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/CommentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/CommentList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/Composition.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/Composition.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/ContextTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/ContextTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/Dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/Dialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/EventHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/EventHandle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/FormTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/FormTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/HocTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/HocTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/HooksTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/HooksTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/JsxTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/JsxTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/KFormTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/KFormTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/MyReduxTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/MyReduxTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/MyRouterTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/MyRouterTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/ReduxTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/ReduxTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/RouterTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/RouterTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/StateMgt.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/StateMgt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/Tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/Tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hook/effect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/userEffect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hook/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hook/useRef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useRef.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/counter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -77,9 +58,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/hooks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/mobx" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -90,10 +72,12 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/mobx" />
       <recent name="$PROJECT_DIR$/src/components/hooks" />
       <recent name="$PROJECT_DIR$/src/components/baseUse" />
       <recent name="$PROJECT_DIR$/src" />
@@ -148,8 +132,16 @@
       <workItem from="1607957069562" duration="2605000" />
       <workItem from="1609944032840" duration="869000" />
       <workItem from="1610256176280" duration="47000" />
-      <workItem from="1610768102841" duration="11133000" />
+      <workItem from="1610768102841" duration="15499000" />
     </task>
+    <task id="LOCAL-00001" summary="hooks各种实现总结">
+      <created>1610803483090</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610803483090</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +157,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hooks各种实现总结" />
+    <option name="LAST_COMMIT_MESSAGE" value="hooks各种实现总结" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
