@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // Lesson保证功能单一，它不关心数据来源，只负责显示
 function Lesson(props) {
@@ -11,9 +11,9 @@ function Lesson(props) {
 
 // 模拟数据
 const lessons = [
-  { stage: 'React', title: '核心API' },
-  { stage: 'React', title: '组件化1' },
-  { stage: 'React', title: '组件化2' },
+  { stage: "React", title: "核心API" },
+  { stage: "React", title: "组件化1" },
+  { stage: "React", title: "组件化2" }
 ];
 
 // 定义高阶组件withContent
@@ -24,23 +24,23 @@ const lessons = [
 //         return <Comp {...content} />;
 //       };
 // }
-const withContent = (Comp) => (props) => {
+const withContent = Comp => props => {
   const content = lessons[props.idx];
   return <Comp {...content} />;
 };
 
 // withLog高阶组件，能够在组件挂载时输出日志
-const withLog = (Comp) => {
+const withLog = Comp => {
   return class extends React.Component {
     componentDidMount() {
       console.log('didMount', this.props);
     }
 
     render() {
-      return <Comp {...this.props}></Comp>;
+      return <Comp {...this.props}></Comp>
     }
-  };
-};
+  }
+}
 
 // 包装
 const LessonWithContent = withLog(withContent(Lesson));

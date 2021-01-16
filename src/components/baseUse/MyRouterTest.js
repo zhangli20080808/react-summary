@@ -2,19 +2,6 @@ import React, { Component } from "react";
 import { createBrowserHistory } from "history";
 import pathToRegexp from "path-to-regexp";
 
-
-/*
-* 思考? 我们看路由中 基本都能拿到 match, history, location 这三个值 就是顶层传递过来的，
-* 给 Router Link Switch使用 处理他们自己响应的逻辑
-* 完成一个对历史记录的管理
-* 思路？ hash popState 只要变了 我们就重新设置 location
-*
-* react-router 一切都是组件的理念，因此实现的核心就是  BrowserRouter Link Route
-* BrowserRouter -- 历史记录管理对象 history 初始化已经乡下传递 location 变更监听
-*
-* */
-
-
 const cache = {};
 const cacheLimit = 10000;
 let cacheCount = 0;

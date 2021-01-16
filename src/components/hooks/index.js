@@ -1,12 +1,18 @@
 import React, { useState, useCallback, useRef, memo, useMemo, useReducer, useContext } from 'react'
-
 let MyContent = React.createContext()
 
 //解决的问题
 //将组件间相互关联的部分拆分成更小的函数
 //hook使我们在无须修改组件结构的情况下复用状态逻辑
+// 优点
+// 1. 类组件要保存实例 函数组件用完直接销毁 性能好
+// 2. 高阶组件复用性差 比如复用10个逻辑要套10层
+// 3. 生命周期管理起来比较麻烦
 
-//注意 1、只能在最外层调用hook 不要再循环 条件或者子函数中调用
+//注意 1、只能在最外层调用hook 不要再循环 条件或者子函数中调用 顺序很重要
+// 错位
+
+
 
 //函数式更新
 function count () {

@@ -10,7 +10,11 @@ import store from './store';
 import {Provider} from 'react-redux'
 // console.log(jsx);
 
-ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+export function render(){
+  ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+}
+render()
+
 // class ClassCmp extends React.Component {
 //
 //     constructor(props) {

@@ -1,51 +1,49 @@
-import React from 'react'
+import React from "react";
 
 // Dialog定义组件外观和行为
-function Dialog (props) {
+function Dialog(props) {
   // 这里props.children代表了标签内部内容
   //   children是什么？合法js表达式
   //   console.log(props.children);
   // 备选消息
   const messages = {
-    foo: { title: 'foo', content: 'foo~' },
-    bar: { title: 'bar', content: 'bar~' },
-  }
+    foo: { title: "foo", content: "foo~" },
+    bar: { title: "bar", content: "bar~" }
+  };
   // 执行函数获得要显示的内容
-  const { def, footer } = props.children(messages[props.msg])
+  const { def, footer } = props.children(messages[props.msg]);
 
   return (
-    <div style={{ border: '1px solid blue' }}>
+    <div style={{ border: "1px solid blue" }}>
       {def}
       <div>{footer}</div>
     </div>
-  )
+  );
 }
 
-function RadioGroup (props) {
-  console.log(props)  // name  children
-  return (
-    <div>
-      {/* 这个地方是个静态方法  我们需要先把需要的数据穿进去  radio vnode的实例 */}
-      {React.Children.map(props.children, (radio) => {
-        // 要修改虚拟dom 只能克隆它
-        // 参数1是克隆对象
-        // 参数2是设置的属性
-        return React.cloneElement(radio, { name: props.name })
-      })}
-    </div>
-  )
+function RadioGroup(props) {
+    return (
+        <div>
+            {React.Children.map(props.children, radio => {
+                // 要修改虚拟dom 只能克隆它
+                // 参数1是克隆对象
+                // 参数2是设置的属性
+                return React.cloneElement(radio, {name: props.name})
+            })}
+        </div>
+    )
 }
 
-function Radio ({ children, ...abc }) {
-  return (
-    <label>
-      <input type="radio" {...abc} />
-      {children}
-    </label>
-  )
+function Radio({children, ...abc}) {
+    return (
+        <label>
+            <input type="radio" {...abc}/>
+            {children}
+        </label>
+    )    
 }
 
-export default function Composition () {
+export default function Composition() {
   return (
     <div>
       <Dialog msg="foo">
@@ -56,10 +54,10 @@ export default function Composition () {
               <p>{content}</p>
             </>
           ),
-          footer: <button onClick={() => alert('react真好')}>确定</button>,
+          footer: <button onClick={() => alert("react真好")}>确定</button>
         })}
       </Dialog>
-      {/* 这个地方我想把  name mvvm 传递给我的子组件 这个时候是不能改的*/}
+
       <RadioGroup name="mvvm">
         <Radio value="vue">vue</Radio>
         <Radio value="react">react</Radio>
@@ -72,5 +70,5 @@ export default function Composition () {
           <input type="radio" name="mvvm"/>angular
       </div> */}
     </div>
-  )
+  );
 }

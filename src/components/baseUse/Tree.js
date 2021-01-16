@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class TreeNode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      open: false
     };
   }
   //   判断是否有子元素
@@ -15,7 +15,7 @@ class TreeNode extends Component {
   toggle = () => {
     if (this.isFolder) {
       this.setState({
-        open: !this.state.open,
+        open: !this.state.open
       });
     }
   };
@@ -28,12 +28,12 @@ class TreeNode extends Component {
             {/* 标题 */}
             {this.props.model.title}
             {/* 有可能显示＋-号 */}
-            {this.isFolder ? <span>{this.state.open ? '-' : '+'}</span> : null}
+            {this.isFolder ? <span>{this.state.open ? "-" : "+"}</span> : null}
           </div>
           {/* 可能存在子树 */}
           {this.isFolder ? (
-            <div style={{ display: this.state.open ? 'block' : 'none' }}>
-              {this.props.model.children.map((model) => (
+            <div style={{ display: this.state.open ? "block" : "none" }}>
+              {this.props.model.children.map(model => (
                 <TreeNode model={model} key={model.title} />
               ))}
             </div>
@@ -46,57 +46,57 @@ class TreeNode extends Component {
 
 export default class Tree extends Component {
   treeData = {
-    title: 'zzz',
+    title: "Web全栈架构师",
     children: [
       {
-        title: 'zl',
+        title: "Java架构师"
       },
       {
-        title: 'JS',
+        title: "JS高级",
         children: [
           {
-            title: 'ES6',
+            title: "ES6"
           },
           {
-            title: '动效',
-          },
-        ],
+            title: "动效"
+          }
+        ]
       },
       {
-        title: 'Web全栈',
+        title: "Web全栈",
         children: [
           {
-            title: 'Vue',
+            title: "Vue训练营",
             expand: true,
             children: [
               {
-                title: '组件化',
+                title: "组件化"
               },
               {
-                title: '源码',
+                title: "源码"
               },
               {
-                title: 'docker部署',
-              },
-            ],
+                title: "docker部署"
+              }
+            ]
           },
           {
-            title: 'React',
+            title: "React",
             children: [
               {
-                title: 'JSX',
+                title: "JSX"
               },
               {
-                title: '虚拟DOM',
-              },
-            ],
+                title: "虚拟DOM"
+              }
+            ]
           },
           {
-            title: 'Node',
-          },
-        ],
-      },
-    ],
+            title: "Node"
+          }
+        ]
+      }
+    ]
   };
   render() {
     return (

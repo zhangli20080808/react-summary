@@ -4,7 +4,7 @@
 *
 * 使用 useEffect 完成副作用操作 赋值给 useEffect 的函数会在组件渲染到屏幕之后执行
 * 你可以把 effect 看作是react从纯函数世界通往命令式世界的逃生通过
-* useEffect 就是一个effect hook 给函数增加了副作用的能力 跟类组件的 componentDidMount
+* useEffect 就是一个effect hooks 给函数增加了副作用的能力 跟类组件的 componentDidMount
 * componentDidUpdate componentWillMount 相同的用途，只不过合并成了一个API
 * */
 import React, { Component, useEffect, useState } from 'react'

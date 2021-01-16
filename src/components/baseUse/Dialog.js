@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   createPortal,
   unmountComponentAtNode,
-  unstable_renderSubtreeIntoContainer,
-} from 'react-dom';
+  unstable_renderSubtreeIntoContainer
+} from "react-dom";
 
 export class Dialog2 extends React.Component {
   // render一个null，目的什么内容都不渲染
@@ -14,7 +14,7 @@ export class Dialog2 extends React.Component {
   componentDidMount() {
     // 首次挂载时候创建宿主div
     const doc = window.document;
-    this.node = doc.createElement('div');
+    this.node = doc.createElement("div");
     doc.body.appendChild(this.node);
 
     this.createPortal(this.props);
@@ -34,11 +34,7 @@ export class Dialog2 extends React.Component {
   createPortal(props) {
     unstable_renderSubtreeIntoContainer(
       this, //当前组件
-      <div className="dialog">
-        {/* 具名插槽的实现 */}
-        <div>{props.children.def}</div>
-        <div>{props.children.footer}</div>
-      </div>, // 塞进传送门的JSX
+      <div className="dialog">{props.children}</div>, // 塞进传送门的JSX
       this.node // 传送门另一端的DOM node
     );
   }
@@ -48,7 +44,7 @@ export default class Dialog extends Component {
   constructor(props) {
     super(props);
 
-    this.node = document.createElement('div');
+    this.node = document.createElement("div");
     document.body.appendChild(this.node);
   }
 

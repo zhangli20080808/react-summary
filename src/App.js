@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from 'react'
-import BaseUse from './components/baseUse';
-import Codemirror from './components/codemirror';
+// import BaseUse from './components/baseUse';
+// import Codemirror from './components/codemirror';
 // import AdvancedUse from './components/advancedUse'
 // import ReduxUse from './components/reduxUse'
 // import TodoList from './components/TodoLIst';
@@ -19,7 +19,7 @@ import Codemirror from './components/codemirror';
 // import "antd/dist/antd.css"
 
 // import {Button} from 'antd';
-// import KFormTest from './components/KFormTest';
+// import KFormTest from './components/baseUse/KFormTest';
 // import Dialog, { Dialog2 } from './components/baseUse/Dialog';
 // import Tree from './components/Tree';
 // import CommentList from './components/CommentList';
@@ -28,9 +28,13 @@ import Codemirror from './components/codemirror';
 // import RouterTest from './components/baseUse/RouterTest';
 // import MyRouterTest from './components/MyRouterTest';
 
-import TestHook from './components/hook';
-import EffectHook from './components/hook/effect';
+// import TestHook from './components/hooks';
+// import EffectHook from './components/hooks/effect';
+// import UseStateDemo from './components/hooks/useState';
+// import UseReducerDemo from './components/hooks/useReducer';
 
+// import CustomerUseReducerDemo from './components/hooks/useReducer实现useState';
+import CustomerUseStateLink from './components/hooks/链表结构实现useState';
 
 
 function App() {
@@ -46,10 +50,14 @@ function App() {
 
   return (
     <div>
+      {/*<UseStateDemo/>*/}
+      {/*<UseReducerDemo/>*/}
+      {/*<CustomerUseReducerDemo/>*/}
+      <CustomerUseStateLink/>
       {/*<TestHook/>*/}
-      <EffectHook/>
-      <BaseUse />
-      <Codemirror/>
+      {/*<EffectHook/>*/}
+      {/*<BaseUse />*/}
+      {/*<Codemirror/>*/}
       {/* <AdvancedUse/> */}
       {/* <ReduxUse/> */}
       {/* <TodoList /> */}
@@ -67,9 +75,10 @@ function App() {
       {/* Hooks */}
       {/* <HooksTest /> */}
       {/* <Button>mua~</Button> */}
-      {/* <WrappedNormalLoginForm></WrappedNormalLoginForm> */}
+      {/* <WrappedNormalLoginForm></WrappedNormalLoginForm>*/}
       {/* <WrappedNormalLoginForm2></WrappedNormalLoginForm2> */}
-      {/* <KFormTest></KFormTest> */}
+      {/*-------  KFormTest ----*/}
+       {/*<KFormTest></KFormTest>*/}
       {/* <Dialog>somthing!!!!</Dialog>
       <Dialog2>
         {{

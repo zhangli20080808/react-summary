@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import {createStore, applyMiddleware} from "../../store/kredux"
+import React, { Component } from "react";
+import { createStore, applyMiddleware } from "../store/kredux";
 
-const counterReducer = function (state = 2, action) {
+const counterReducer = function(state = 0, action) {
   const num = action.payload || 1;
   switch (action.type) {
     case "add":
@@ -14,10 +14,9 @@ const counterReducer = function (state = 2, action) {
 };
 
 // 自定义中间件
-function logger({dispatch,getState}) {
+function logger() {
   // 返回真正中间件任务执行函数
-  return (dispatch) => action => {
-    console.log(dispatch,action)
+  return dispatch => action => {
     // 执行中间件任务
     console.log(action.type + "执行了！！！");
 
@@ -25,35 +24,32 @@ function logger({dispatch,getState}) {
     return dispatch(action);
   };
 }
-
 // thunk实现
-// const thunk = ({dispatch,getState}) => dispatch => action => {
-//     // thunk逻辑：处理函数action
-// 	if (typeof action == 'function') {
-// 		return action(dispatch, getState)
-//     }
-//     // 不是函数直接跳过
-// 	return dispatch(action)
-// }
+const thunk = ({getState}) => dispatch => action => {
+    // thunk逻辑：处理函数action
+	if (typeof action == 'function') {
+		return action(dispatch, getState)
+    }
+    // 不是函数直接跳过
+	return dispatch(action)
+}
 
-const store = createStore(counterReducer, applyMiddleware(logger));
+const store = createStore(counterReducer, applyMiddleware(logger, thunk));
 
 export default class MyReduxTest extends Component {
   componentDidMount() {
     store.subscribe(() => this.forceUpdate());
   }
-
   render() {
     return (
       <div>
         {store.getState()}
-        <button onClick={() => store.dispatch({type: "add"})}>+</button>
-        <button onClick={() => store.dispatch(function () {
-          setTimeout(() => {
-            store.dispatch({type: "add"})
-          }, 1000);
-        })}>+
-        </button>
+        <button onClick={() => store.dispatch({ type: "add" })}>+</button>
+        <button onClick={() => store.dispatch(function(){
+            setTimeout(() => {
+                store.dispatch({ type: "add" })
+            }, 1000);
+        })}>+</button>
       </div>
     );
   }

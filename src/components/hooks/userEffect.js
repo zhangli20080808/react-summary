@@ -4,8 +4,17 @@
 *
 * 使用 useEffect 完成副作用操作 赋值给 useEffect 的函数会在组件渲染到屏幕之后执行
 * 你可以把 effect 看作是react从纯函数世界通往命令式世界的逃生通过
-* useEffect 就是一个effect hook 给函数增加了副作用的能力 跟类组件的 componentDidMount
+*
+* useEffect 就是一个effect hooks 给函数增加了副作用的能力 跟类组件的 componentDidMount
 * componentDidUpdate componentWillMount 相同的用途，只不过合并成了一个API
+*
+* 当组件初次渲染完成之后 或者组件更新的时候 执行
+*
+* 1. 会在每次 render 的时候必定执行一次。
+* 2. 如果返回了函数，那么在下一次 render 之前或组件 unmount 之前必定会运行一次返回函数的代码。
+* 3. 如果指定了依赖数组，且不为空，则当数组里的每个元素发生变化时，都会重新运行一次。
+* 4. 如果数组为空，则只在第一次 render 时执行一次，如果有返回值，则同 2
+* 5. 如果在 useEffect 中更新了 state，且没有指定依赖数组，或 state 存在于依赖数组中，就会造成死循环
 * */
 import React, { Component, useEffect, useState } from 'react'
 
