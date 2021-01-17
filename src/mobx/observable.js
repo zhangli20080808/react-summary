@@ -33,7 +33,27 @@ function creatObservable (val) {
   return deepProxy(val, handler)
 }
 
-const observable = (target) => {
+const observable = (target, key, descriptor) => {
+  // 需要将这个目标对象  进行代理操作 创建成可观察对象
+  if (typeof key === 'string') {
+    // 通过装饰器实现的 先把装饰的值进行深度代理
+    let v = descriptor.initializer()
+    v = creatObservable(v)
+    let relation = new Reaction()
+    return {
+      configuration: true,
+      enumerable: true,
+      set(val){
+        v = val
+        relation.run()
+      },
+      get(){
+        relation.collect()
+        return v
+      }
+    }
+
+  }
   return creatObservable(target)
 }
 

@@ -8,16 +8,16 @@ import ReactDOM from 'react-dom'
 import App from './App'
 // import store from './store';
 import { Provider } from 'react-redux'
-import mobx from './mobx/mobx'
+import Mobx from './mobx/mobx'
 
 // console.log(jsx);
 
-export function render () {
-  ReactDOM.render(<App title="ok"/>, document.getElementById('root'))
-  // ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
-}
-
-render()
+// export function render () {
+//   ReactDOM.render(<Mobx />, document.getElementById('root'))
+//   // ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+// }
+//
+// render()
 
 // class ClassCmp extends React.Component {
 //
