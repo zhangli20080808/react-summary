@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="mobx实现 1">
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="mobx实现 2">
+      <change afterPath="$PROJECT_DIR$/src/components/process/JsxDemo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/userEffect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/userEffect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mobx/mobx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobx/mobx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mobx/observable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobx/observable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mobx/reaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobx/reaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kdom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kdom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kreact-dom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact-dom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kreact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +81,9 @@
       <recent name="$PROJECT_DIR$/src/components/baseUse" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Process" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -127,7 +134,8 @@
       <workItem from="1607957069562" duration="2605000" />
       <workItem from="1609944032840" duration="869000" />
       <workItem from="1610256176280" duration="47000" />
-      <workItem from="1610768102841" duration="20819000" />
+      <workItem from="1610768102841" duration="21582000" />
+      <workItem from="1610979934868" duration="10483000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -143,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610814739402</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="mobx实现 2">
+      <created>1610868424605</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610868424605</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,11 +174,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hooks各种实现总结" />
     <MESSAGE value="mobx实现 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="mobx实现 1" />
+    <MESSAGE value="mobx实现 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="mobx实现 2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -6,18 +6,17 @@ import ReactDOM from 'react-dom'
 // import React from './kkreact'
 // import {render} from './kkreact/ReactDOM'
 import App from './App'
-// import store from './store';
+import store from './store'
 import { Provider } from 'react-redux'
-import Mobx from './mobx/mobx'
+// import Mobx from './mobx/mobx'
 
-// console.log(jsx);
+export function render (Comp) {
+  // ReactDOM.render(<Mobx />, document.getElementById('root'))
+  // ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+  ReactDOM.render(<Comp/>, document.getElementById('root'))
+}
 
-// export function render () {
-//   ReactDOM.render(<Mobx />, document.getElementById('root'))
-//   // ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
-// }
-//
-// render()
+render(App)
 
 // class ClassCmp extends React.Component {
 //

@@ -36,6 +36,7 @@ import React, { useState, useEffect, Component } from 'react'
 // import CustomerUseReducerDemo from './components/hooks/useReducer实现useState';
 // import CustomerUseStateLink from './components/hooks/链表结构实现useState';
 
+import JsxDemo from './components/process/JsxDemo'
 
 function App() {
   const [time, setTime] = useState('test');
@@ -50,7 +51,8 @@ function App() {
 
   return (
     <div>
-      13
+      456
+      <JsxDemo/>
       {/*<UseStateDemo/>*/}
       {/*<UseReducerDemo/>*/}
       {/*<CustomerUseReducerDemo/>*/}
