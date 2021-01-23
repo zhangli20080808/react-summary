@@ -1,6 +1,6 @@
 /**
  *
- * @param vnode  null 数字 字符串 react元素 不能是数组
+ * @param vnode
  * @returns {Text|any}
  */
 import ReactDom from './kreact-dom'
@@ -84,9 +84,20 @@ function reconcileChildren (children, parentNode) {
   })
 }
 
+/**
+ * 函数组件的渲染过程
+ * @param vnode
+ * @returns {string|Text|any|string}
+ * 1. 定义一个React元素，也就是虚拟dom，他的type 是函数 比如 Welcome
+ * 2. render方法会执行这个 Welcome 函数，并传入props对象，返回虚拟dom
+ * 3. 把返回的虚拟dom转成真实dom，插入到页面中去
+ * function Welcome(props) { return <h1>{hello, props.name}</h1> }
+ * vnode {type: Welcome ,props: { name :'zl'}}
+ * newVNode { type: 'h1', props :{ children: { hello,zl }} }
+ */
 function createFuncComp (vnode) {
   const { type, props } = vnode
-  // function   此处type是一个函数
+  // function   此处type是一个函数 newVNode 可能是一个原生虚拟dom，也可能是一个组件虚拟dom
   const newVNode = type(props)
   return initVNode(newVNode)
 }

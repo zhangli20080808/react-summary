@@ -1,6 +1,6 @@
 /**
  *
- * @param type 元素的类型
+ * @param type 元素的类型 可能是一个字符串(原生组件)，也可能是函数
  * @param props 配置的对象,一般来说是属性对象
  * @param children 第一个儿子
  * @returns {{vType: number, type, props}}
