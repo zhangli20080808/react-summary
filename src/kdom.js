@@ -66,6 +66,10 @@ function updateProps (node, props) {
       Object.keys(styleObj).forEach(cur => {
         node.style[cur] = styleObj[cur]  // node.style.color = 'red'
       })
+      // 点击事件 onClick
+    } else if (item.startsWith('on')) {
+      // node.onclick = onclick函数
+      node[item.toLocaleLowerCase()] = props[item]
     } else {
       node.setAttribute(item, rest[item])
     }
@@ -102,12 +106,31 @@ function createFuncComp (vnode) {
   return initVNode(newVNode)
 }
 
+/**
+ *
+ * @param
+ * @returns {string|Text|any|Text|string}
+ * 1. vnode 我们的vnode也可能是一个 类(组件)
+ * 2. 在定义组件元素的时候，会把jsx所有的属性封装成一个props传递给组件
+ * 3. 组件的名称一定要首字母大写 react是通过首字母来区分是原生还是自定义组件
+ * 4. 先定义，再使用
+ * 5. 组件要返回只能返回一个react根元素
+ *
+ * 类组件是如何渲染的？
+ * 1. 定义一个类组件元素
+ * 2. render
+ *    1> 先创建类组件的实例，new XXX(props) this.props = props
+ *    2> 调动实例的render方法(想想我们平常写的render方法和return)得到一个react元素
+ *    3> 把返回的虚拟dom转成真实dom，插入到页面中去
+ */
 function createClassComp (vnode) {
   const { type, props } = vnode
   // class xxx  此处type是一个class
-  const comp = new type(props)
+  const comp = new type(props)  // new Welcome({name:'zl'})
   //vNode 如何得到？ 调用组件自身的 render方法
   const newVNode = comp.render()
-  //一定要记住 要转化成真实节点
-  return initVNode(newVNode)
+  //一定要记住 要转化成真实节点 让类组件实例上挂载一个dom，指向类组件的真实dom ->  组件更新的时候会用到
+  const dom = initVNode(newVNode)
+  comp.dom = dom
+  return dom
 }
