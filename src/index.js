@@ -2,7 +2,7 @@
 import React from './kreact'
 // import ReactDOM from 'react-dom'
 import ReactDOM from './kreact-dom'
-
+import { updateQueue } from './kreact'
 // import React from './kkreact'
 // import {render} from './kkreact/ReactDOM'
 import App from './App'
@@ -39,8 +39,12 @@ class ClassCmp extends React.Component {
   //   this.setState({ msg: 'dong~~~' })
   // }
 
-  onClick = () => {
-    console.log('1')
+  /**
+   * 合成事件
+   * event 不是dom原生的 是经过react封装的 事件委托->document 在react17 绑定到根节点了
+   */
+  onClick = (event) => {
+    // updateQueue.isBatchingUpdate = true
     this.setState({ number: this.state.number + 1 })
     console.log(this.state.number) // 0
     this.setState({ number: this.state.number + 1 })
@@ -51,13 +55,14 @@ class ClassCmp extends React.Component {
     //   this.setState({ number: this.state.number + 1 })
     //   console.log(this.state.number)  // 3
     // })
+    // updateQueue.batchUpdate()
   }
 
   render () {
     return (
       <div className='app' onClick={this.onClick}>
-        Hello {this.props.name}
-        {this.state.msg}
+        <p> Hello {this.props.name}</p>
+        <p>{this.state.number}</p>
       </div>
     )
     //build后
@@ -84,7 +89,6 @@ function FuncCmp (props) {
   // );
 }
 
-//
 const jsx = (
   <div>
     <p>我是内容</p>
@@ -107,7 +111,7 @@ const jsx = (
 //     name: '我是class组件'
 //   })
 // )
-console.log(jsx)
+console.log(jsx,'jsx')
 
 ReactDOM.render(jsx, document.getElementById('root'))
 

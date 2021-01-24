@@ -1,14 +1,20 @@
 /**
- *
- * @param vnode
+ * 把虚拟dom变成真实dom
+ * @param vnode null 数字 字符串 react元素 不能是数组
  * @returns {Text|any}
  */
 import ReactDom from './kreact-dom'
+import { addEvent } from './event'
 
 export default function initVNode (vnode) {
   if (!vnode) {
     return ''
   }
+  // 如果textContent是一个字符串或者数字的话，创建一个文本的节点返回
+  if (typeof vnode === 'string' || typeof vnode === 'number') {
+    return document.createTextNode(vnode)
+  }
+  // 负责就是要给react元素
   let { vType } = vnode
   if (!vType) {
     //文本节点
@@ -50,8 +56,8 @@ function createNativeElement (vnode) {
 
 /**
  * 把虚拟Dom对象中的属性设置到真实Dom元素上
- * @param node
- * @param props
+ * @param node dom元素
+ * @param props 属性对象
  */
 function updateProps (node, props) {
   const { key, children, ...rest } = props
@@ -69,7 +75,8 @@ function updateProps (node, props) {
       // 点击事件 onClick
     } else if (item.startsWith('on')) {
       // node.onclick = onclick函数
-      node[item.toLocaleLowerCase()] = props[item]
+      // node[item.toLocaleLowerCase()] = props[item]
+      addEvent(node, item.toLocaleLowerCase(), rest[item])
     } else {
       node.setAttribute(item, rest[item])
     }

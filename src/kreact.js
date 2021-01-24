@@ -6,15 +6,16 @@ import { isFunc } from './util'
  * 单例 对象就够了 需要很多对象的时候用类
  * 定义更新队列
  */
-export let updateQueue = {
-  updaters: [], // 更新器数组
+export const updateQueue = {
+  updaters: new Set(), // 更新器数组 -> 更改为 new Set() 相同的updater 只会放进去一次
   isBatchingUpdate: false, // 是否处于批量更新模式 默认 非批量更新
   add (updater) {  // 增加一个更细器
-    this.updaters.push(updater)
+    this.updaters.add(updater)
   },
   batchUpdate () { // 强制批量更新组件更新
-    this.updaters.forEach(update => update.updateComponent)
+    this.updaters.forEach(update => update.updateComponent())
     this.isBatchingUpdate = false
+    this.updaters.clear()
   }
 }
 
@@ -35,7 +36,7 @@ class Updater {
   }
 
   updateComponent () {
-    const { classInstance, pendingStates } = this
+    let { classInstance, pendingStates } = this
     if (pendingStates.length > 0) {
       // 拿到组件的老状态和数组中的新状态数组进行合并
       classInstance.state = this.getState()
@@ -49,7 +50,7 @@ class Updater {
    * @returns { state } 获取最新state
    */
   getState () {
-    const { classInstance, pendingStates } = this
+    let { classInstance, pendingStates } = this
     let state = classInstance.state // 组件XXX.state
     // 需要更新   拿到组件的老状态和数组中的新状态数组进行合并
     if (pendingStates.length > 0) {
@@ -68,17 +69,22 @@ class Updater {
 /**
  *
  * @param type 元素的类型 可能是一个字符串(原生组件)，也可能是函数
- * @param props 配置的对象,一般来说是属性对象
+ * @param config 配置的对象,一般来说是属性对象
  * @param children 第一个儿子
  * @returns {{vType: number, type, props}} 虚拟dom，也就是我们的react元素
  */
-export function createElement (type, props, ...children) {
-  // console.log(arguments,children) // 虚拟dom的创建是由内向外的
+export function createElement (type, config, children) {
+  // console.log( children) // 虚拟dom的创建是由内向外的
+  if (config) {
+    delete config._owner
+    delete config._store
+  }
   // 返回虚拟DOM
-  // if (arguments.length > 3) {
-  //   children = Array.prototype.slice.call(arguments, 2)
-  // }
+  if (arguments.length > 3) {
+    children = Array.prototype.slice.call(arguments, 2)
+  }
   // children 可能是数组(多于一个儿子) 也有可能是字符串、数子 或者 null 也可能是个react元素
+  let props = { ...config }
   props.children = children
   // 能够区分组件类型：  因为后续的dom操作要根据类型去做
   // vType: 1-原生标签；2-函数组件；3-类组件
