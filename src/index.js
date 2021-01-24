@@ -30,7 +30,8 @@ class ClassCmp extends React.Component {
     super(props)
 
     this.state = {
-      msg: 'something'
+      msg: 'something',
+      number: 0
     }
   }
 
@@ -40,7 +41,16 @@ class ClassCmp extends React.Component {
 
   onClick = () => {
     console.log('1')
-    this.setState({ msg: 'mua~~~' })
+    this.setState({ number: this.state.number + 1 })
+    console.log(this.state.number) // 0
+    this.setState({ number: this.state.number + 1 })
+    console.log(this.state.number)  // 0
+    // setTimeout(() => {
+    //   this.setState({ number: this.state.number + 1 })
+    //   console.log(this.state.number)  // 2
+    //   this.setState({ number: this.state.number + 1 })
+    //   console.log(this.state.number)  // 3
+    // })
   }
 
   render () {
@@ -73,6 +83,7 @@ function FuncCmp (props) {
   //     props.name
   // );
 }
+
 //
 const jsx = (
   <div>

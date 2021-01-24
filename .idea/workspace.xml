@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="函数组件实现">
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="setState 同步更新">
+      <change afterPath="$PROJECT_DIR$/src/components/process/update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kdom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kdom.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kreact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +66,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -80,7 +81,10 @@
       <recent name="$PROJECT_DIR$/src/components/Process" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="update.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/components/process/update.js" working-dir="$PROJECT_DIR$/src/components/process">
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -94,6 +98,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="Node.js.update.js" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +135,7 @@
       <workItem from="1609944032840" duration="869000" />
       <workItem from="1610256176280" duration="47000" />
       <workItem from="1610768102841" duration="21582000" />
-      <workItem from="1610979934868" duration="17284000" />
+      <workItem from="1610979934868" duration="21810000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -174,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611414318119</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="setState 同步更新">
+      <created>1611482740993</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611482740993</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +210,8 @@
     <MESSAGE value="mobx实现 2" />
     <MESSAGE value="实现 react 核心 api" />
     <MESSAGE value="函数组件实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="函数组件实现" />
+    <MESSAGE value="setState 同步更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="setState 同步更新" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
