@@ -27,18 +27,44 @@ import JsxDemo from './components/process/JsxDemo'
  * 3. 如何实现组件异步更新
  */
 class ClassCmp extends React.Component {
+  static defaultProps = {  // 初始化 默认属性
+    name: 'zl'
+  }
+
   constructor (props) {
     super(props)
     this.a = React.createRef() // {current: null}
-
     this.state = {
       msg: 'something',
       number: 0
     }
   }
-  // componentDidMount () {
-  //   this.setState({ msg: 'dong~~~' })
-  // }
+
+  componentWillMount () {
+    // 此时可以访问状态和属性，可进行api调用等
+    console.log('2.组件将要挂载')
+  }
+
+  componentDidMount () {
+    // 组件已挂载，可进行状态更新操作
+    console.log('3.组件已挂载')
+  }
+
+  componentWillUpdate () {
+    // 组件将要更新，可做更新统计
+    console.log('6.组件将要更新')
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    // 组件是否需要更新，需要返回布尔值结果，优化点
+    console.log('5.组件是否需要更新？')
+    return nextState.number % 2 === 0
+  }
+
+  componentDidUpdate () {
+    // 组件更新
+    console.log('7.组件已更新')
+  }
 
   handleTop = () => {
     console.log('冒泡测试')
@@ -51,28 +77,28 @@ class ClassCmp extends React.Component {
    * event 不是dom原生的 是经过react封装的 事件委托->document 在react17 绑定到根节点了
    */
   handleClick = (event) => {
-    console.log(this.a.current.value)
-    // event.persist() // persist 把这个event持久化  事件执行后不销毁
-    setTimeout(() => {
-      console.log(event)
-    }, 1000)
+    // console.log(this.a.current.value)
+    // // event.persist() // persist 把这个event持久化  事件执行后不销毁
+    // setTimeout(() => {
+    //   console.log(event)
+    // }, 1000)
     // updateQueue.isBatchingUpdate = true
     this.setState({ number: this.state.number + 1 })
-    console.log(this.state.number) // 0
-    this.setState({ number: this.state.number + 1 })
-    console.log(this.state.number)  // 0
-    setTimeout(() => {
-      this.setState({ number: this.state.number + 1 })
-      console.log(this.state.number)  // 2
-      this.setState({ number: this.state.number + 1 })
-      console.log(this.state.number)  // 3
-    })
+    // console.log(this.state.number) // 0
+    // this.setState({ number: this.state.number + 1 })
+    // console.log(this.state.number)  // 0
+    // setTimeout(() => {
+    //   this.setState({ number: this.state.number + 1 })
+    //   console.log(this.state.number)  // 2
+    //   this.setState({ number: this.state.number + 1 })
+    //   console.log(this.state.number)  // 3
+    // })
     // updateQueue.batchUpdate()
   }
 
   render () {
     return (
-      <div className='app' onClick={this.handleTop}>
+      <div className='app'>
         <p> Hello {this.props.name}</p>
         <input type="text" ref={this.a}/>
         <button onClick={this.handleClick}>测试event</button>
@@ -104,8 +130,8 @@ function FuncCmp (props) {
 
 const jsx = (
   <div>
-    <p>我是内容</p>
-    <FuncCmp name="我是function组件"/>
+    {/*<p>我是内容</p>*/}
+    {/*<FuncCmp name="我是function组件"/>*/}
     <ClassCmp name="我是class组件"/>
   </div>
 )

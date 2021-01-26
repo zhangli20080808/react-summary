@@ -31,16 +31,24 @@ class Updater {
     this.pendingStates.push(partialState)
     // 如果当前处于批量更新模式，也就是异步更新模式 把当前实例放到 updateQueue 里
     // 如果是非批量更新 也就是同步更新 则调用 updateComponent 直接更新
+    this.emitUpdate() // 所有的更新事件发射器 两个来源 点击事件 组件更新
+  }
+
+  // TODO 实现组件的属性改变之后的更新
+  emitUpdate () {
     updateQueue.isBatchingUpdate ? updateQueue.add(this) : this.updateComponent()
+
   }
 
   updateComponent () {
     let { classInstance, pendingStates } = this
     if (pendingStates.length > 0) {
-      // 拿到组件的老状态和数组中的新状态数组进行合并
-      classInstance.state = this.getState()
-      // 让组件强制更新
-      classInstance.forceUpdate()
+      // // 拿到组件的老状态和数组中的新状态数组进行合并
+      // classInstance.state = this.getState()
+      // // 让组件强制更新
+      // classInstance.forceUpdate()
+      // 无论是否真正更新页面，组件的state其实已经在this.getState的时候更新了
+      shouldUpdate(classInstance, this.getState())
     }
   }
 
@@ -113,7 +121,7 @@ export function createElement (type, config, children) {
 }
 
 // 每个类组件都会实现自己的render方法 约定 实例化的时候去调用生成vnode
-class Component {
+export class Component {
   //标识符 区分class和函数组件
   static isReactComponent = true
 
@@ -138,6 +146,9 @@ class Component {
   }
 
   forceUpdate () {
+    if (this.componentWillUpdate) { // 将要更新
+      this.componentWillUpdate()
+    }
     let renderVNode = this.render()
     updateClassComponent(this, renderVNode)
   }
@@ -148,11 +159,23 @@ function updateClassComponent (classInstance, renderVNode) {
   let oldDom = classInstance.dom
   let newDom = initVNode(renderVNode)  // 真实dom
   oldDom.parentNode.replaceChild(newDom, oldDom)
+  if (classInstance.componentDidUpdate) { // 更新结束
+    classInstance.componentDidUpdate()
+  }
   classInstance.dom = newDom
 }
 
 function createRef () {
   return { current: null }
+}
+
+function shouldUpdate (classInstance, nextState) {
+  classInstance.state = nextState
+  // 判断要不要更新 如果提供了 shouldComponentUpdate 并且他的返回值为 false 更新结束
+  if (classInstance.shouldComponentUpdate && !classInstance.shouldComponentUpdate(classInstance.props, nextState)) {
+    return
+  }
+  classInstance.forceUpdate()
 }
 
 export default { createElement, Component, createRef }

@@ -138,10 +138,17 @@ function createClassComp (vnode) {
   const { type, props } = vnode
   // class xxx  此处type是一个class
   const comp = new type(props)  // new Welcome({name:'zl'})
+  // 注意 componentWillMount 这些生命周期函数 是实例的属性 不是类的属性
+  if(comp.componentWillMount){
+    comp.componentWillMount()
+  }
   //vNode 如何得到？ 调用组件自身的 render方法
   const newVNode = comp.render()
   //一定要记住 要转化成真实节点 让类组件实例上挂载一个dom，指向类组件的真实dom ->  组件更新的时候会用到
   const dom = initVNode(newVNode)
   comp.dom = dom
+  if(comp.componentDidMount){
+    comp.componentDidMount()
+  }
   return dom
 }
