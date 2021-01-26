@@ -1,6 +1,7 @@
 // import React from 'react'
-import React from './kreact'
 // import ReactDOM from 'react-dom'
+
+import React from './kreact'
 import ReactDOM from './kreact-dom'
 import { updateQueue } from './kreact'
 // import React from './kkreact'
@@ -39,16 +40,21 @@ class ClassCmp extends React.Component {
   //   this.setState({ msg: 'dong~~~' })
   // }
 
+  handleTop = () => {
+    console.log('冒泡测试')
+  }
+
   /**
    * 合成事件
+   * 1. 我们的事件对象是一个临时对象 用完就销毁掉了 实现一个共享对象的效果，节约内存 方便回收
+   * 2. 为了批量更新  updateQueue
    * event 不是dom原生的 是经过react封装的 事件委托->document 在react17 绑定到根节点了
    */
   handleClick = (event) => {
-    // console.log(event)  // 我们的事件对象是一个临时对象 用完就销毁掉了 实现一个共享对象的效果，节约内存 方便回收
     // event.persist() // persist 把这个event持久化  事件执行后不销毁
-    // setTimeout(() => {
-    //   console.log(event)
-    // }, 1000)
+    setTimeout(() => {
+      console.log(event)
+    }, 1000)
     // updateQueue.isBatchingUpdate = true
     this.setState({ number: this.state.number + 1 })
     console.log(this.state.number) // 0
@@ -65,7 +71,7 @@ class ClassCmp extends React.Component {
 
   render () {
     return (
-      <div className='app'>
+      <div className='app' onClick={this.handleTop}>
         <p> Hello {this.props.name}</p>
         <p>{this.state.number}</p>
         <button onClick={this.handleClick}>测试event</button>

@@ -10,7 +10,6 @@ export function addEvent (dom, eventType, listener) {
   // 给dom增加一个store属性，值是一个空对象
   let store = dom.store || (dom.store = {})
   store[eventType] = listener  // store.onclick = handleClick
-
   if (!document[eventType]) { // 有可能会覆盖用户的赋值操作 也有可能会被用户赋值覆盖掉
     document[eventType] = dispatchEvent// document.onclick = dispatchEvent
   }
@@ -29,18 +28,21 @@ function dispatchEvent (event) { // event是原生事件DOM对象
   let eventType = `on${type}`  // onclick
   // 异步更新
   updateQueue.isBatchingUpdate = true
-  let { store } = target
-  // 调用事件 store存储过了
-  let listener = store && store[eventType]
-  // 包装事件 绑定了事件我们再去执行 不然点击没有绑定的区域会有问题
-  if (listener) {
-    let syntheticEvent = createSyntheticEvent(event)
-    listener.call(target, syntheticEvent)
-    for (const key in syntheticEvent) {
-      syntheticEvents[key] = null
-    }
-    updateQueue.batchUpdate()
+  let syntheticEvent = createSyntheticEvent(event)
+
+  while (target) {
+    let { store } = target
+    // 调用事件 store存储过了
+    let listener = store && store[eventType]
+    // 包装事件 绑定了事件我们再去执行 不然点击没有绑定的区域会有问题
+    // 自己实现事件冒泡
+    listener && listener.call(target, syntheticEvent)
+    target = target.parentNode
   }
+  for (const key in syntheticEvent) {
+    syntheticEvents[key] = null
+  }
+  updateQueue.batchUpdate()
 }
 
 function createSyntheticEvent (nativeEvent) {
