@@ -29,13 +29,13 @@ import JsxDemo from './components/process/JsxDemo'
 class ClassCmp extends React.Component {
   constructor (props) {
     super(props)
+    this.a = React.createRef() // {current: null}
 
     this.state = {
       msg: 'something',
       number: 0
     }
   }
-
   // componentDidMount () {
   //   this.setState({ msg: 'dong~~~' })
   // }
@@ -51,6 +51,7 @@ class ClassCmp extends React.Component {
    * event 不是dom原生的 是经过react封装的 事件委托->document 在react17 绑定到根节点了
    */
   handleClick = (event) => {
+    console.log(this.a.current.value)
     // event.persist() // persist 把这个event持久化  事件执行后不销毁
     setTimeout(() => {
       console.log(event)
@@ -73,7 +74,7 @@ class ClassCmp extends React.Component {
     return (
       <div className='app' onClick={this.handleTop}>
         <p> Hello {this.props.name}</p>
-        <p>{this.state.number}</p>
+        <input type="text" ref={this.a}/>
         <button onClick={this.handleClick}>测试event</button>
       </div>
     )
@@ -123,7 +124,7 @@ const jsx = (
 //     name: '我是class组件'
 //   })
 // )
-console.log(jsx, 'jsx')
+// console.log(jsx, 'jsx')
 
 ReactDOM.render(jsx, document.getElementById('root'))
 

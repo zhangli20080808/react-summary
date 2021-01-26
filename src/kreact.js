@@ -74,16 +74,19 @@ class Updater {
  */
 export function createElement (type, config, children) {
   // console.log( children) // 虚拟dom的创建是由内向外的
+  let ref
   if (config) {
     delete config._owner
     delete config._store
+    ref = config.ref
+    delete config.ref
   }
+  let props = { ...config }
   // 返回虚拟DOM
   if (arguments.length > 3) {
     children = Array.prototype.slice.call(arguments, 2)
   }
   // children 可能是数组(多于一个儿子) 也有可能是字符串、数子 或者 null 也可能是个react元素
-  let props = { ...config }
   props.children = children
   // 能够区分组件类型：  因为后续的dom操作要根据类型去做
   // vType: 1-原生标签；2-函数组件；3-类组件
@@ -104,7 +107,8 @@ export function createElement (type, config, children) {
   return {
     vType,
     type,
-    props
+    props,
+    ref
   }
 }
 
@@ -147,4 +151,8 @@ function updateClassComponent (classInstance, renderVNode) {
   classInstance.dom = newDom
 }
 
-export default { createElement, Component }
+function createRef () {
+  return { current: null }
+}
+
+export default { createElement, Component, createRef }

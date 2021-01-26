@@ -10,7 +10,7 @@ export default function initVNode (vnode) {
   if (!vnode) {
     return ''
   }
-  // 如果textContent是一个字符串或者数字的话，创建一个文本的节点返回
+  // 如果vnode是一个字符串或者数字的话，创建一个文本的节点返回
   if (typeof vnode === 'string' || typeof vnode === 'number') {
     return document.createTextNode(vnode)
   }
@@ -34,7 +34,7 @@ export default function initVNode (vnode) {
 }
 
 function createNativeElement (vnode) {
-  const { type, props } = vnode
+  const { type, props, ref } = vnode
   //'div'  {id:'demo',children:[],key,ref，style: { color: 'red' }}
   const node = document.createElement(type)  // span div
   updateProps(node, props)  // 更新属性 把虚拟Dom上的属性设置到真实Dom上
@@ -51,6 +51,8 @@ function createNativeElement (vnode) {
     // 如果出现其他的以为情况 null 就是空串
     node.textContent = props.children ? props.children.toString() : ''
   }
+  if (ref)
+    ref.current = node
   return node
 }
 
@@ -90,9 +92,11 @@ function updateProps (node, props) {
  */
 function reconcileChildren (children, parentNode) {
   //递归子元素Node
-  children.forEach(childrenVNode => {
-    ReactDom.render(childrenVNode, parentNode)
-  })
+  if (children) {
+    children.forEach(childrenVNode => {
+      ReactDom.render(childrenVNode, parentNode)
+    })
+  }
 }
 
 /**
