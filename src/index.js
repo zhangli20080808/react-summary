@@ -43,26 +43,32 @@ class ClassCmp extends React.Component {
    * 合成事件
    * event 不是dom原生的 是经过react封装的 事件委托->document 在react17 绑定到根节点了
    */
-  onClick = (event) => {
+  handleClick = (event) => {
+    // console.log(event)  // 我们的事件对象是一个临时对象 用完就销毁掉了 实现一个共享对象的效果，节约内存 方便回收
+    // event.persist() // persist 把这个event持久化  事件执行后不销毁
+    // setTimeout(() => {
+    //   console.log(event)
+    // }, 1000)
     // updateQueue.isBatchingUpdate = true
     this.setState({ number: this.state.number + 1 })
     console.log(this.state.number) // 0
     this.setState({ number: this.state.number + 1 })
     console.log(this.state.number)  // 0
-    // setTimeout(() => {
-    //   this.setState({ number: this.state.number + 1 })
-    //   console.log(this.state.number)  // 2
-    //   this.setState({ number: this.state.number + 1 })
-    //   console.log(this.state.number)  // 3
-    // })
+    setTimeout(() => {
+      this.setState({ number: this.state.number + 1 })
+      console.log(this.state.number)  // 2
+      this.setState({ number: this.state.number + 1 })
+      console.log(this.state.number)  // 3
+    })
     // updateQueue.batchUpdate()
   }
 
   render () {
     return (
-      <div className='app' onClick={this.onClick}>
+      <div className='app'>
         <p> Hello {this.props.name}</p>
         <p>{this.state.number}</p>
+        <button onClick={this.handleClick}>测试event</button>
       </div>
     )
     //build后
@@ -111,7 +117,7 @@ const jsx = (
 //     name: '我是class组件'
 //   })
 // )
-console.log(jsx,'jsx')
+console.log(jsx, 'jsx')
 
 ReactDOM.render(jsx, document.getElementById('root'))
 

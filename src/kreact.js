@@ -20,7 +20,6 @@ export const updateQueue = {
 }
 
 // 更新器会有多个 不断去创建实例
-
 class Updater {
   constructor (classInstance) {
     this.classInstance = classInstance  // 类组件的实例
