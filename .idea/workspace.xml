@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="ref 实现">
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="实现基本的生命周期函数">
+      <change afterPath="$PROJECT_DIR$/src/components/Carousel/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Carousel/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Carsouel2/index.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseUse/lifecycle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/lifecycle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kdom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kdom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kreact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -135,7 +138,9 @@
       <workItem from="1609944032840" duration="869000" />
       <workItem from="1610256176280" duration="47000" />
       <workItem from="1610768102841" duration="21582000" />
-      <workItem from="1610979934868" duration="35170000" />
+      <workItem from="1610979934868" duration="39704000" />
+      <workItem from="1611841144426" duration="467000" />
+      <workItem from="1613304041192" duration="3509000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -221,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611671477635</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="实现基本的生命周期函数">
+      <created>1611674752412</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1611674752412</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +264,8 @@
     <MESSAGE value="合成事件的意义" />
     <MESSAGE value="实现合成事件的冒泡" />
     <MESSAGE value="ref 实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="ref 实现" />
+    <MESSAGE value="实现基本的生命周期函数" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现基本的生命周期函数" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

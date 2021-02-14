@@ -8,7 +8,7 @@ import { addEvent } from './event'
 
 export default function initVNode (vnode) {
   if (!vnode) {
-    return ''
+    return document.createTextNode(vnode)
   }
   // 如果vnode是一个字符串或者数字的话，创建一个文本的节点返回
   if (typeof vnode === 'string' || typeof vnode === 'number') {
@@ -16,7 +16,7 @@ export default function initVNode (vnode) {
   }
   // 负责就是要给react元素
   let { vType } = vnode
-  if (!vType) {
+  if (!vType || !vnode) {
     //文本节点
     return document.createTextNode(vnode)
   }
@@ -42,7 +42,7 @@ function createNativeElement (vnode) {
   if (typeof props.children === 'string' || typeof props.children === 'number') {
     node.textContent = props.children // node.textContent = 'hello'
     // 说明是一个单 react 元素
-  } else if (typeof props.children === 'object' && props.children.type) {
+  } else if (typeof props.children === 'object' && props.children && props.children.type) {
     ReactDom.render(props.children, node)
     // 如果儿子是一个数组，说明有多个节点
   } else if (typeof Array.isArray(props.children)) {
@@ -139,7 +139,7 @@ function createClassComp (vnode) {
   // class xxx  此处type是一个class
   const comp = new type(props)  // new Welcome({name:'zl'})
   // 注意 componentWillMount 这些生命周期函数 是实例的属性 不是类的属性
-  if(comp.componentWillMount){
+  if (comp.componentWillMount) {
     comp.componentWillMount()
   }
   //vNode 如何得到？ 调用组件自身的 render方法
@@ -147,7 +147,7 @@ function createClassComp (vnode) {
   //一定要记住 要转化成真实节点 让类组件实例上挂载一个dom，指向类组件的真实dom ->  组件更新的时候会用到
   const dom = initVNode(newVNode)
   comp.dom = dom
-  if(comp.componentDidMount){
+  if (comp.componentDidMount) {
     comp.componentDidMount()
   }
   return dom
