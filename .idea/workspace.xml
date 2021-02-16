@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="实现基本的生命周期函数">
-      <change afterPath="$PROJECT_DIR$/src/components/Carousel/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Carousel/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Carsouel2/index.less" afterDir="false" />
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="useImperativeHandle">
+      <change afterPath="$PROJECT_DIR$/src/components/Carousel3/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Carousel3/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/hooks/useImperativeHandle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kdom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kdom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Carousel/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Carousel/index.module.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Carousel/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Carousel/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Carsouel2/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/forwardRef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/baseUse/JsxTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseUse/JsxTest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -59,7 +60,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/mobx" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -75,6 +76,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/mobx" />
       <recent name="$PROJECT_DIR$/src/components/hooks" />
       <recent name="$PROJECT_DIR$/src/components/baseUse" />
@@ -140,7 +142,8 @@
       <workItem from="1610768102841" duration="21582000" />
       <workItem from="1610979934868" duration="39704000" />
       <workItem from="1611841144426" duration="467000" />
-      <workItem from="1613304041192" duration="3509000" />
+      <workItem from="1613304041192" duration="8266000" />
+      <workItem from="1613373320017" duration="707000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -233,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611674752412</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="modal">
+      <created>1613308706762</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1613308706762</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +275,9 @@
     <MESSAGE value="实现合成事件的冒泡" />
     <MESSAGE value="ref 实现" />
     <MESSAGE value="实现基本的生命周期函数" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现基本的生命周期函数" />
+    <MESSAGE value="modal" />
+    <MESSAGE value="useImperativeHandle" />
+    <option name="LAST_COMMIT_MESSAGE" value="useImperativeHandle" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import {Icon} from 'antd'
-import styles from  './index.module.less'
+import  './index.css'
 
 class PhotoPreview extends React.Component {
   constructor (props) {
@@ -412,7 +412,7 @@ class PhotoPreview extends React.Component {
         {figureEl
           ? ReactDOM.createPortal(
             <>
-              <figure className={styles.photoPreview}>
+              <figure className="photo-preview">
                 <div className="photo-preview__in" ref={this.ppiRef}>
                   {loadEl ? (
                     <div className="photo-preview__loading"/>

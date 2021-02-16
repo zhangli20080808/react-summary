@@ -36,7 +36,7 @@ import React, { useState, useEffect, Component } from 'react'
 // import CustomerUseReducerDemo from './components/hooks/useReducer实现useState';
 // import CustomerUseStateLink from './components/hooks/链表结构实现useState';
 import JsxDemo from './components/process/JsxDemo'
-import PhotoPreview from './components/Carousel'
+import PhotoPreview from './components/Carousel3'
 
 const atlasImgList = [
   {
