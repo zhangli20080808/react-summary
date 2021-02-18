@@ -36,7 +36,7 @@ class PhotoPreview extends React.Component {
     this.ppiRef = React.createRef()
   }
 
-  // 预览图片超出window宽或高的处理
+  // 预览图片超出window宽或高的处理 待定
   beyondWindow = () => {
     const { imgParentStyle, rotateDeg, increaseNum } = this.state
     const iWidth = parseFloat(imgParentStyle.width) + increaseNum * 2
