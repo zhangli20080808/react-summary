@@ -202,6 +202,7 @@ render(App)
 
 /*
 * 三个大接口  React.createElement() React.Component React.render
+*
 * 1.实现createElement并返回vdom
 * 2.创建kreact-dom：实现render，能够将kvdom返回的dom追加至container
 * 3.区分原始标签和自定义组件
