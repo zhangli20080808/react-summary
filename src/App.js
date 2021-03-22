@@ -36,49 +36,50 @@ import React, { useState, useEffect, Component } from 'react'
 // import CustomerUseReducerDemo from './components/hooks/useReducer实现useState';
 // import CustomerUseStateLink from './components/hooks/链表结构实现useState';
 import JsxDemo from './components/process/JsxDemo'
-import PhotoPreview from './components/Carousel3'
+// import PhotoPreview from './components/Carousel3'
+// import Type from './components/typescript/app'
 
-const atlasImgList = [
-  {
-    url: 'http://dummyimage.com/200x100/ff3838&text=Hello',
-    bigUrl: 'http://dummyimage.com/800x400/ff3838&text=Hello',
-    alt: 'Hello',
-  },
-  {
-    url: 'http://dummyimage.com/200x100/ff9f1a&text=Photo',
-    bigUrl: 'http://dummyimage.com/800x400/ff9f1a&text=Photo',
-    alt: 'Photo',
-  },
-  {
-    url: 'http://dummyimage.com/200x100/c56cf0&text=Preview',
-    bigUrl: 'http://dummyimage.com/800x400/c56cf0&text=Preview',
-    alt: 'Preview',
-  },
-  {
-    url: 'http://dummyimage.com/100x100/3ae374&text=!',
-    bigUrl: 'http://dummyimage.com/400x400/3ae374&text=!',
-    alt: '！',
-  },
-]
-const Test = () => {
-  return (
-    <>
-      {atlasImgList.slice(0, 1).map((item, index) => {
-        return (
-          <PhotoPreview
-            key={index}
-            imgIndex={index}
-            imgs={atlasImgList}
-            url={item.url}
-            bigUrl={item.bigUrl}
-            alt={item.alt}
-            // tool={{ turnLeft: false, turnRight: false }}
-          />
-        )
-      })}
-    </>
-  )
-}
+// const atlasImgList = [
+//   {
+//     url: 'http://dummyimage.com/200x100/ff3838&text=Hello',
+//     bigUrl: 'http://dummyimage.com/800x400/ff3838&text=Hello',
+//     alt: 'Hello',
+//   },
+//   {
+//     url: 'http://dummyimage.com/200x100/ff9f1a&text=Photo',
+//     bigUrl: 'http://dummyimage.com/800x400/ff9f1a&text=Photo',
+//     alt: 'Photo',
+//   },
+//   {
+//     url: 'http://dummyimage.com/200x100/c56cf0&text=Preview',
+//     bigUrl: 'http://dummyimage.com/800x400/c56cf0&text=Preview',
+//     alt: 'Preview',
+//   },
+//   {
+//     url: 'http://dummyimage.com/100x100/3ae374&text=!',
+//     bigUrl: 'http://dummyimage.com/400x400/3ae374&text=!',
+//     alt: '！',
+//   },
+// ]
+// const Test = () => {
+//   return (
+//     <>
+//       {atlasImgList.slice(0, 1).map((item, index) => {
+//         return (
+//           <PhotoPreview
+//             key={index}
+//             imgIndex={index}
+//             imgs={atlasImgList}
+//             url={item.url}
+//             bigUrl={item.bigUrl}
+//             alt={item.alt}
+//             // tool={{ turnLeft: false, turnRight: false }}
+//           />
+//         )
+//       })}
+//     </>
+//   )
+// }
 
 function App () {
   const [time, setTime] = useState('test')
@@ -93,7 +94,8 @@ function App () {
 
   return (
     <div>
-      <Test/>
+    {/* <Type/> */}
+      {/* <Test/> */}
       {/*<JsxDemo/>*/}
       {/*<UseStateDemo/>*/}
       {/*<UseReducerDemo/>*/}

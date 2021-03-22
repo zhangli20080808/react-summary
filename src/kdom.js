@@ -36,13 +36,20 @@ export default function initVNode (vnode) {
 function createNativeElement (vnode) {
   const { type, props, ref } = vnode
   //'div'  {id:'demo',children:[],key,ref，style: { color: 'red' }}
-  const node = document.createElement(type)  // span div
-  updateProps(node, props)  // 更新属性 把虚拟Dom上的属性设置到真实Dom上
+  const node = document.createElement(type) // span div
+  updateProps(node, props) // 更新属性 把虚拟Dom上的属性设置到真实Dom上
   // 处理子节点 如果子节点就是一个单节点 并且是字符串或者数字
-  if (typeof props.children === 'string' || typeof props.children === 'number') {
+  if (
+    typeof props.children === 'string' ||
+    typeof props.children === 'number'
+  ) {
     node.textContent = props.children // node.textContent = 'hello'
     // 说明是一个单 react 元素
-  } else if (typeof props.children === 'object' && props.children && props.children.type) {
+  } else if (
+    typeof props.children === 'object' &&
+    props.children &&
+    props.children.type
+  ) {
     ReactDom.render(props.children, node)
     // 如果儿子是一个数组，说明有多个节点
   } else if (typeof Array.isArray(props.children)) {
@@ -51,8 +58,7 @@ function createNativeElement (vnode) {
     // 如果出现其他的以为情况 null 就是空串
     node.textContent = props.children ? props.children.toString() : ''
   }
-  if (ref)
-    ref.current = node
+  if (ref) ref.current = node
   return node
 }
 
@@ -63,7 +69,7 @@ function createNativeElement (vnode) {
  */
 function updateProps (node, props) {
   const { key, children, ...rest } = props
-  Object.keys(rest).forEach(item => {
+  Object.keys(rest).forEach((item) => {
     // 需特殊处理的htmlFor，className,style
     if (item === 'className') {
       node.setAttribute('class', rest[item])
@@ -71,8 +77,8 @@ function updateProps (node, props) {
       node.setAttribute('for', rest[item])
     } else if (item === 'style') {
       const styleObj = rest[item]
-      Object.keys(styleObj).forEach(cur => {
-        node.style[cur] = styleObj[cur]  // node.style.color = 'red'
+      Object.keys(styleObj).forEach((cur) => {
+        node.style[cur] = styleObj[cur] // node.style.color = 'red'
       })
       // 点击事件 onClick
     } else if (item.startsWith('on')) {
@@ -93,7 +99,7 @@ function updateProps (node, props) {
 function reconcileChildren (children, parentNode) {
   //递归子元素Node
   if (children) {
-    children.forEach(childrenVNode => {
+    children.forEach((childrenVNode) => {
       ReactDom.render(childrenVNode, parentNode)
     })
   }
@@ -137,7 +143,7 @@ function createFuncComp (vnode) {
 function createClassComp (vnode) {
   const { type, props } = vnode
   // class xxx  此处type是一个class
-  const comp = new type(props)  // new Welcome({name:'zl'})
+  const comp = new type(props) // new Welcome({name:'zl'})
   // 注意 componentWillMount 这些生命周期函数 是实例的属性 不是类的属性
   if (comp.componentWillMount) {
     comp.componentWillMount()
