@@ -14,9 +14,11 @@ export default function initVNode (vnode) {
   if (typeof vnode === 'string' || typeof vnode === 'number') {
     return document.createTextNode(vnode)
   }
+  console.log(vnode, 'vnode')
+  //  vnode  ->  type,props,vType,ref
   // 负责就是要给react元素
   let { vType } = vnode
-  if (!vType || !vnode) {
+  if (!vType) {
     //文本节点
     return document.createTextNode(vnode)
   }
@@ -35,7 +37,7 @@ export default function initVNode (vnode) {
 
 function createNativeElement (vnode) {
   const { type, props, ref } = vnode
-  //'div'  {id:'demo',children:[],key,ref，style: { color: 'red' }}
+  //'div' props=> {id:'demo',children:[],key,ref，style: { color: 'red' }}
   const node = document.createElement(type) // span div
   updateProps(node, props) // 更新属性 把虚拟Dom上的属性设置到真实Dom上
   // 处理子节点 如果子节点就是一个单节点 并且是字符串或者数字
@@ -50,9 +52,9 @@ function createNativeElement (vnode) {
     props.children &&
     props.children.type
   ) {
-    ReactDom.render(props.children, node)
-    // 如果儿子是一个数组，说明有多个节点
-  } else if (typeof Array.isArray(props.children)) {
+    ReactDom.render(props.children, node) // 递归
+    // 如果儿子是一个数组，说明有多个子节点
+  } else if (Array.isArray(props.children)) {
     reconcileChildren(props.children, node)
   } else {
     // 如果出现其他的以为情况 null 就是空串

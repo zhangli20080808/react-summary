@@ -113,9 +113,9 @@ export function createElement (type, config, children) {
   }
 
   return {
-    vType,
     type,
     props,
+    vType,
     ref
   }
 }

@@ -173,18 +173,11 @@ function FuncCmp (props) {
 }
 
 const element = (
-  <h1 className='title' style={{ color: 'red' }}>
+  <h1 className='title' id='demo' style={{ color: 'red' }}>
     <span>hello</span>
   </h1>
 )
 
-const jsx = (
-  <div>
-    <p>我是内容</p>
-    {/*<FuncCmp name="我是function组件"/>*/}
-    {/*<ClassCmp name="我是class组件"/>*/}
-  </div>
-)
 
 // const jsx = React.createElement(
 //   'div',
