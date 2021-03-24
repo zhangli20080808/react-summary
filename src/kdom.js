@@ -121,18 +121,18 @@ function reconcileChildren (children, parentNode) {
 function createFuncComp (vnode) {
   const { type, props } = vnode
   // function   此处type是一个函数 newVNode 可能是一个原生虚拟dom，也可能是一个组件虚拟dom
+  // 再返回一个函数组件也没关系 initVNode递归
   const newVNode = type(props)
   return initVNode(newVNode)
 }
 
 /**
- *
  * @param
  * @returns {string|Text|any|Text|string}
- * 1. vnode 我们的vnode也可能是一个 类(组件)
- * 2. 在定义组件元素的时候，会把jsx所有的属性封装成一个props传递给组件
+ * 1. react元素可能是一个字符串(原生dom类型)，也可能是一个函数，也可能是一个 类(类组件)
+ * 2. 在定义组件元素的时候，会把jsx所有的属性封装成一个props传递给组件->this.props
  * 3. 组件的名称一定要首字母大写 react是通过首字母来区分是原生还是自定义组件
- * 4. 先定义，再使用
+ * 4. 组件要先定义，再使用
  * 5. 组件要返回只能返回一个react根元素
  *
  * 类组件是如何渲染的？
@@ -152,8 +152,9 @@ function createClassComp (vnode) {
   }
   //vNode 如何得到？ 调用组件自身的 render方法
   const newVNode = comp.render()
-  //一定要记住 要转化成真实节点 让类组件实例上挂载一个dom，指向类组件的真实dom ->  组件更新的时候会用到
+  //一定要记住 要转化成真实节点
   const dom = initVNode(newVNode)
+  // 让类组件实例上挂载一个dom，指向类组件的真实dom ->  组件更新的时候会用到
   comp.dom = dom
   if (comp.componentDidMount) {
     comp.componentDidMount()

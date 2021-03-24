@@ -172,30 +172,29 @@ function FuncCmp (props) {
   )
 }
 
-const element = (
-  <h1 className='title' id='demo' style={{ color: 'red' }}>
-    <span>hello</span>
-  </h1>
-)
-
-
-// const jsx = React.createElement(
-//   'div',
-//   null,
-//   React.createElement(
-//     'p',
-//     null, '我是内容'
-//   ),
-//   React.createElement(FuncCmp, {
-//     name: '我是function组件'
-//   }),
-//   React.createElement(ClassCmp, {
-//     name: '我是class组件'
-//   })
+// const element = (
+//   <h1 className='title' id='demo' style={{ color: 'red' }}>
+//     <span>hello</span>
+//   </h1>
 // )
-console.log(element, 'jsx')
 
-ReactDOM.render(element, document.getElementById('root'))
+const jsx = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'p',
+    null, '我是内容'
+  ),
+  React.createElement(FuncCmp, {
+    name: '我是function组件'
+  }),
+  React.createElement(ClassCmp, {
+    name: '我是class组件'
+  })
+)
+console.log(jsx, 'jsx')
+
+ReactDOM.render(jsx, document.getElementById('root'))
 
 /*
 * 三个大接口  React.createElement() React.Component React.render
