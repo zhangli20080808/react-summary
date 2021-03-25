@@ -134,7 +134,7 @@ export class Component {
 
   /**
    * 同步更新逻辑
-   * @param partialState
+   * @param partialState 新的部分状态
    */
   setState (partialState) {
     // this.state = { ...this.state, ...partialState }
