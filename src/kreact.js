@@ -4,7 +4,7 @@ import { isFunc } from './util'
 /**
  * 什么时候用对象 什么时候用类
  * 单例 对象就够了 需要很多对象的时候用类
- * 定义更新队列
+ * 定义更新队列 所有组件共用一个 updateQueue
  */
 export const updateQueue = {
   updaters: new Set(), // 更新器数组 -> 更改为 new Set() 相同的updater 只会放进去一次
@@ -37,7 +37,6 @@ class Updater {
   // TODO 实现组件的属性改变之后的更新
   emitUpdate () {
     updateQueue.isBatchingUpdate ? updateQueue.add(this) : this.updateComponent()
-
   }
 
   updateComponent () {

@@ -24,7 +24,7 @@ let syntheticEvents = {}
  * @param event
  */
 function dispatchEvent (event) { // event是原生事件DOM对象
-  let { target, type } = event  // type-> click target-> 事件源 button
+  let { target, type } = event  // type-> click target-> 事件源 button dom
   let eventType = `on${type}`  // onclick
   // 异步更新
   updateQueue.isBatchingUpdate = true
@@ -39,12 +39,18 @@ function dispatchEvent (event) { // event是原生事件DOM对象
     listener && listener.call(target, syntheticEvent)
     target = target.parentNode
   }
+  // 用完后直接销毁掉,全部清空 提高性能
   for (const key in syntheticEvent) {
     syntheticEvents[key] = null
   }
   updateQueue.batchUpdate()
 }
 
+/**
+ * 包装后的合成事件  属性拷贝一份返回
+ * @param nativeEvent
+ * @returns {{}}
+ */
 function createSyntheticEvent (nativeEvent) {
   for (const key in nativeEvent) {
     syntheticEvents[key] = nativeEvent[key]

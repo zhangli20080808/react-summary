@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="feat: 复习createClassComp">
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="feat: 复习同步更新">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/event.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kreact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/connect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/connect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +144,7 @@
       <workItem from="1613304041192" duration="8266000" />
       <workItem from="1613373320017" duration="1357000" />
       <workItem from="1616316388725" duration="4181000" />
-      <workItem from="1616597461498" duration="3758000" />
+      <workItem from="1616597461498" duration="6525000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -269,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616598901163</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat: 复习同步更新">
+      <created>1616678236057</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1616678236057</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +316,8 @@
     <MESSAGE value="feat: first" />
     <MESSAGE value="feat: 复习initVNode" />
     <MESSAGE value="feat: 复习createClassComp" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 复习createClassComp" />
+    <MESSAGE value="feat: 复习同步更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 复习同步更新" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
