@@ -14,7 +14,7 @@ export default function initVNode (vnode) {
   if (typeof vnode === 'string' || typeof vnode === 'number') {
     return document.createTextNode(vnode)
   }
-  console.log(vnode, 'vnode')
+  // console.log(vnode, 'vnode')
   //  vnode  ->  type,props,vType,ref
   // 负责就是要给react元素
   let { vType } = vnode
@@ -28,10 +28,10 @@ export default function initVNode (vnode) {
     return createNativeElement(vnode)
   } else if (vType === 2) {
     //函数组件
-    return createFuncComp(vnode)
+    return  updateFuncComp(vnode)
   } else {
     //类组件
-    return createClassComp(vnode)
+    return updateClassComp(vnode)
   }
 }
 
@@ -118,7 +118,7 @@ function reconcileChildren (children, parentNode) {
  * vnode {type: Welcome ,props: { name :'zl'}}
  * newVNode { type: 'h1', props :{ children: { hello,zl }} }
  */
-function createFuncComp (vnode) {
+function updateFuncComp (vnode) {
   const { type, props } = vnode
   // function   此处type是一个函数 newVNode 可能是一个原生虚拟dom，也可能是一个组件虚拟dom
   // 再返回一个函数组件也没关系 initVNode递归
@@ -142,11 +142,13 @@ function createFuncComp (vnode) {
  *    2> 调动实例的render方法(想想我们平常写的render方法和return)得到一个react元素
  *    3> 把返回的虚拟dom转成真实dom，插入到页面中去
  */
-function createClassComp (vnode) {
+function updateClassComp (vnode) {
   const { type, props } = vnode
   // class xxx  此处type是一个class
   const comp = new type(props) // new Welcome({name:'zl'})
   // 注意 componentWillMount 这些生命周期函数 是实例的属性 不是类的属性
+  // 让虚拟dom的实例=类组件的实例
+  vnode.classInstance = comp
   if (comp.componentWillMount) {
     comp.componentWillMount()
   }
@@ -155,7 +157,11 @@ function createClassComp (vnode) {
   //一定要记住 要转化成真实节点
   const dom = initVNode(newVNode)
   // 让类组件实例上挂载一个dom，指向类组件的真实dom ->  组件更新的时候会用到
-  comp.dom = dom
+  // 让类虚拟dom的dom属性和render方法返回的虚拟dom的dom属性都指向真实dom
+  vnode.dom = newVNode.dom = dom
+  // 让组件实例的老的vdom属性指向本次render出来的渲染
+  comp.oldVom = newVNode
+  comp.dom = dom  // div
   if (comp.componentDidMount) {
     comp.componentDidMount()
   }

@@ -35,22 +35,22 @@ class ChildCounter extends Component {
   componentWillReceiveProps (nextProps, nextState) {
     // console.log(nextProps,'nextProps')
     // 父组件传递的属性有变化，做相应响应
-    console.log('子组件 4.将要接收属性传递')
+    console.log('子组件 4.将要接收属性传递 componentWillReceiveProps')
   }
 
   componentWillUpdate () {
     // 组件将要更新，可做更新统计
-    console.log('子组件 6.组件将要更新')
+    console.log('子组件 6.组件将要更新 componentWillUpdate')
   }
 
   componentDidUpdate () {
     // 组件更新
-    console.log('子组件 7.组件已更新')
+    console.log('子组件 7.组件已更新 componentDidUpdate')
   }
 
   componentWillUnmount () {
     // 组件将要卸载, 可做清理工作
-    console.log('8.组件将要卸载')
+    console.log('8.组件将要卸载 componentWillUnmount')
   }
 
   render () {
@@ -84,17 +84,17 @@ class ClassCmp extends React.Component {
 
   componentWillMount () {
     // 此时可以访问状态和属性，可进行api调用等
-    console.log('父组件 2.组件将要挂载')
+    console.log('父组件 2.组件将要挂载 componentWillMount')
   }
 
   componentDidMount () {
     // 组件已挂载，可进行状态更新操作
-    console.log('父组件 3.组件已挂载')
+    console.log('父组件 3.组件已挂载 componentDidMount')
   }
 
   componentWillUpdate () {
     // 组件将要更新，可做更新统计
-    console.log('父组件 6.组件将要更新')
+    console.log('父组件 6.组件将要更新 componentWillUpdate')
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -105,7 +105,7 @@ class ClassCmp extends React.Component {
 
   componentDidUpdate () {
     // 组件更新
-    console.log('父组件 7.组件已更新')
+    console.log('父组件 7.组件已更新 componentDidUpdate')
   }
 
   handleTop = () => {
@@ -139,9 +139,11 @@ class ClassCmp extends React.Component {
   }
 
   render () {
+    console.log('父组件 render')
     return (
       <div className='app'>
         <p> Hello {this.props.name}</p>
+        {this.state.number}
         {/*<input type="text" ref={this.a}/>*/}
         <p>
           {this.state.number === 4 ? null : <ChildCounter count={this.state.number}/>}
@@ -192,7 +194,7 @@ const jsx = React.createElement(
     name: '我是class组件'
   })
 )
-console.log(jsx, 'jsx')
+// console.log(jsx, 'jsx')
 
 ReactDOM.render(jsx, document.getElementById('root'))
 

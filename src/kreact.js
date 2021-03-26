@@ -153,6 +153,11 @@ export class Component {
   }
 }
 
+/**
+ * 更新dom
+ * @param classInstance
+ * @param renderVNode
+ */
 function updateClassComponent (classInstance, renderVNode) {
   // 机械替换 后续换成diff
   let oldDom = classInstance.dom
