@@ -28,7 +28,7 @@ export default function initVNode (vnode) {
     return createNativeElement(vnode)
   } else if (vType === 2) {
     //函数组件
-    return  updateFuncComp(vnode)
+    return updateFuncComp(vnode)
   } else {
     //类组件
     return updateClassComp(vnode)
@@ -152,18 +152,74 @@ function updateClassComp (vnode) {
   if (comp.componentWillMount) {
     comp.componentWillMount()
   }
-  //vNode 如何得到？ 调用组件自身的 render方法
-  const newVNode = comp.render()
+  //vNode 如何得到？ 调用组件自身的 render方法  得到一个虚拟dom或者说react元素
+  const newVNode = comp.render()  // <div class='app'>p childCounter button</div>
   //一定要记住 要转化成真实节点
   const dom = initVNode(newVNode)
   // 让类组件实例上挂载一个dom，指向类组件的真实dom ->  组件更新的时候会用到
-  // 让类虚拟dom的dom属性和render方法返回的虚拟dom的dom属性都指向真实dom
+  // 让类虚拟dom的dom属性和render方法返回的虚拟dom的dom属性都指向真实dom 记录真实dom
+  // vnode.dom与 newVNode.dom的区别？  vnode -> {type: Welcome } newVNode-> {type:'div'}
   vnode.dom = newVNode.dom = dom
-  // 让组件实例的老的vdom属性指向本次render出来的渲染
-  comp.oldVom = newVNode
+  // 让组件实例的老的VDom属性指向本次render出来的渲染
+  comp.oldVdom = newVNode
   comp.dom = dom  // div
   if (comp.componentDidMount) {
     comp.componentDidMount()
   }
   return dom
+}
+
+/**
+ * 找到老的虚拟dom和新的虚拟dom之间的差异，将相应的差异更新到真实dom上
+ * @param parentNode 父的Dom节点
+ * @param oldVDom 老的虚拟Dom
+ * @param newVDom 新的虚拟Dom
+ */
+export function compareTwoVDom (parentNode, oldVDom, newVDom) {
+  if (oldVDom === null && newVDom === null) {
+    return null
+  }
+  if (oldVDom && newVDom === null) {
+    let currentDom = oldVDom.dom // span
+    parentNode.removeChild(currentDom)
+    // 如果是个组件 执行卸载周期
+    if (oldVDom.classInstance && oldVDom.classInstance.componentWillMount) {
+      oldVDom.classInstance.componentWillMount()
+    }
+  } else if (oldVDom === null && newVDom) {
+    let newDom = initVNode(newVDom) //
+    newVDom.dom = newVDom
+    parentNode.appendChild(newDom)
+    return newDom
+  } else if (oldVDom && newVDom) {
+    domDiff(oldVDom, newVDom)
+    return newVDom
+  }
+}
+
+/**
+ * 深度比较
+ * dom diff 的一些规则约定 为了优化性能 有些假定条件
+ * 1. 不考虑跨层级移动 只考虑一层 同一层级比较
+ * 2.
+ * @param oldVDom
+ * @param newVDom
+ */
+function domDiff (oldVDom, newVDom) {
+  let currentDom = newVDom.dom = oldVDom.dom  // 获取老的真实dom
+  newVDom.classInstance = oldVDom.classInstance
+  if (typeof oldVDom.type === 'string') {
+    updateProps(currentDom, oldVDom.props, newVDom.props)
+    updateChildren(currentDom, oldVDom.props.children, newVDom.props.children)
+  } else if (typeof oldVDom.type === 'function') {
+    updateClassInstance(oldVDom, newVDom)
+  }
+}
+
+function updateChildren (parentNode, oldVDom, newVDom) {
+
+}
+
+function updateClassInstance (oldVDom, newVDom) {
+
 }

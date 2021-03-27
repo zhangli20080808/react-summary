@@ -1,4 +1,4 @@
-import initVNode from './kdom'
+import initVNode, { compareTwoVDom } from './kdom'
 import { isFunc } from './util'
 
 /**
@@ -148,8 +148,20 @@ export class Component {
     if (this.componentWillUpdate) { // 将要更新
       this.componentWillUpdate()
     }
-    let renderVNode = this.render()
-    updateClassComponent(this, renderVNode)
+    // 不再这样对比  需要dom diff
+    // let renderVNode = this.render()
+    // updateClassComponent(this, renderVNode)
+
+    let newVDom = this.render()
+    // oldVDom 就是render方法渲染得到的那个虚拟dom div
+    // this.oldVDom.dom.parentNode ->#root
+    // childCounter.dom.parentNode  => <div id='app'>
+    let currentVDom = compareTwoVDom(this.oldVDom.dom.parentNode, newVDom)
+    // 每次更新完成后  最新的vdom会成为最新的上一次的vdom，等待下一次更新 这次的新的会成为下次的老的
+    this.oldVDom = currentVDom
+    if (this.componentDidUpdate) {
+      componentDidUpdate()
+    }
   }
 }
 
