@@ -176,8 +176,9 @@ function updateClassComp (vnode) {
  * @param parentNode 父的Dom节点
  * @param oldVdom 老的虚拟Dom
  * @param newVdom 新的虚拟Dom
+ * @param nextDom 下一个节点
  */
-export function compareTwoVDom (parentNode, oldVdom, newVdom) {
+export function compareTwoVDom (parentNode, oldVdom, newVdom, nextDom) {
   console.log(oldVdom, newVdom, 'compareTwoVDom')
   // 老没有 新也没有 null
   if (!oldVdom && !newVdom) {
@@ -195,7 +196,12 @@ export function compareTwoVDom (parentNode, oldVdom, newVdom) {
   } else if (!oldVdom && newVdom) {
     let newDom = initVNode(newVdom)
     newVdom.dom = newVdom
-    parentNode.appendChild(newDom)
+    // 插入到下一个节点的前面
+    if (nextDom) {
+      parentNode.insertBefore(newDom)
+    } else {
+      parentNode.appendChild(newDom)
+    }
     return newDom
     // 新有 老有 更新
   } else {
@@ -213,7 +219,7 @@ export function compareTwoVDom (parentNode, oldVdom, newVdom) {
  */
 function domDiff (oldVdom, newVdom) {
   // 如果走到这里 则意味着我们要复用老的DOM节点了
-  console.log(oldVdom, newVdom,'domDiff')
+  console.log(oldVdom, newVdom, 'domDiff')
   let currentDom = newVdom.dom = oldVdom.dom  // 获取老的真实dom
   console.log(typeof oldVdom.type)
   newVdom.classInstance = oldVdom.classInstance
@@ -246,7 +252,9 @@ function updateChildren (parentNode, oldVChildren, newVChildren) {
   newVChildren = Array.isArray(newVChildren) ? newVChildren : [newVChildren]
   let maxLength = Math.max(oldVChildren.length, newVChildren.length)
   for (let i = 0; i < maxLength; i++) {
-    compareTwoVDom(parentNode, oldVChildren[i], newVChildren[i])
+    // 找此虚拟dom对应的真实dom之后存在的真实dom
+    let nextDom = oldVChildren.find((item, index) => index > i && item && item.dom)
+    compareTwoVDom(parentNode, oldVChildren[i], newVChildren[i], nextDom && nextDom.dom)
   }
 }
 
