@@ -159,6 +159,8 @@ export class Component {
       }
     }
     let newVDom = this.render()
+    // 在真正修改dom之前拿到一些dom信息
+    let extraArgs = this.getSnapshotBeforeUpdate && this.getSnapshotBeforeUpdate()
     // console.log(this,'this')
     // oldVdom 就是render方法渲染得到的那个虚拟dom div
     // this.oldVdom.dom.parentNode ->#root
@@ -168,7 +170,7 @@ export class Component {
     // console.log(currentVDom,'currentVDom')
     this.oldVdom = currentVDom
     if (this.componentDidUpdate) {
-      this.componentDidUpdate()
+      this.componentDidUpdate(this.props, this.state, extraArgs)
     }
   }
 }

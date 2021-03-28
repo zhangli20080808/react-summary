@@ -1,8 +1,8 @@
-// import React, { Component } from 'react'
-// import ReactDOM from 'react-dom'
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
-import React, { Component } from './kreact'
-import ReactDOM from './kreact-dom'
+// import React, { Component } from './kreact'
+// import ReactDOM from './kreact-dom'
 import { updateQueue } from './kreact'
 // import React from './kkreact'
 // import {render} from './kkreact/ReactDOM'
@@ -211,9 +211,60 @@ function FuncCmp (props) {
 // )
 // console.log(jsx, 'jsx')
 let element = <ClassCmpCounter/>
+
 // console.log(element)
 
-ReactDOM.render(element, document.getElementById('root'))
+class ScrollingList extends React.Component {
+  constructor (props) {
+    super(props)
+    this.listRef = React.createRef()
+    this.state = {
+      message: []
+    }
+  }
+
+  addMsg = () => {
+    this.setState({
+      message: [`${this.state.message.length}`, ...this.state.message]
+    })
+  }
+
+  componentDidMount () {
+    setInterval(() => {
+      this.addMsg()
+    }, 1000)
+  }
+
+  getSnapshotBeforeUpdate (prevProps, prevState) {
+    // 上次卷去高度 和 内容高度
+    return {
+      prevScrollTop: this.listRef.current.scrollTop,
+      prevScrollHeight: this.listRef.current.scrollHeight
+    }
+  }
+
+  componentDidUpdate (prevProps, prevState, snapshot) {
+    const { prevScrollTop, prevScrollHeight } = snapshot
+    this.listRef.current.scrollTop = prevScrollTop + (this.listRef.current.scrollHeight - prevScrollHeight)
+  }
+
+  render () {
+    let style = {
+      height: '100px',
+      width: '200px',
+      border: '1px solid red',
+      overflow: 'auto'
+    }
+    return <div ref={this.listRef} style={style}>
+      {this.state.message.map(item => {
+        return <div>{item}</div>
+      })}
+    </div>
+  }
+}
+
+// ReactDOM.render(element, document.getElementById('root'))
+ReactDOM.render(<ScrollingList/>, document.getElementById('root'))
 
 /*
 * 三个大接口  React.createElement() React.Component React.render
