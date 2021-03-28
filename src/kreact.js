@@ -152,9 +152,13 @@ export class Component {
     // 不再这样对比  需要dom diff
     // let renderVNode = this.render()
     // updateClassComponent(this, renderVNode)
-
+    if (this.ownVdom.type.getDerivedStateFromProps) {
+      let newState = this.ownVdom.type.getDerivedStateFromProps(this.props, this.state)
+      if (newState) {
+        this.state = newState
+      }
+    }
     let newVDom = this.render()
-    console.log(newVDom)
     // console.log(this,'this')
     // oldVdom 就是render方法渲染得到的那个虚拟dom div
     // this.oldVdom.dom.parentNode ->#root

@@ -22,6 +22,22 @@ import JsxDemo from './components/process/JsxDemo'
 // render(App)
 //
 class ChildCounter extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      number: 0
+    }
+  }
+
+  static getDerivedStateFromProps (nextProps, prevState) {
+    let { count } = nextProps
+    if (count % 2 === 0) {
+      return { number: count * 2 }
+    } else {
+      return { number: count * 3 }
+    }
+  }
+
   componentWillMount () {
     // 此时可以访问状态和属性，可进行api调用等
     console.log('子组件 1. componentWillMount ')
@@ -57,7 +73,8 @@ class ChildCounter extends Component {
     console.log('子组件 2. render ')
     return (
       <div id='child-counter'>
-        {this.props.count}
+        <p>{this.props.count}</p>
+        <p>{this.state.number}</p>
       </div>
     )
   }
@@ -100,7 +117,8 @@ class ClassCmpCounter extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
     // 组件是否需要更新，需要返回布尔值结果，优化点
     console.log('父组件 5.组件是否需要更新？')
-    return nextState.number % 2 === 0
+    // return nextState.number % 2 === 0
+    return true
   }
 
   componentDidUpdate () {
@@ -143,7 +161,8 @@ class ClassCmpCounter extends React.Component {
     return (
       <div className={`counter-${this.state.number}`}>
         <p>{this.state.number}</p>
-        {this.state.number === 4 ? null : <ChildCounter count={this.state.number}/>}
+        {/*{this.state.number === 4 ? null : <ChildCounter count={this.state.number}/>}*/}
+        <ChildCounter count={this.state.number}/>
         <button onClick={this.handleClick}>测试event</button>
       </div>
     )

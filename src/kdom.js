@@ -151,6 +151,8 @@ function updateClassComp (vnode) {
   // 注意 componentWillMount 这些生命周期函数 是实例的属性 不是类的属性
   // 让虚拟dom的实例=类组件的实例
   vnode.classInstance = classInstance
+  // 为了处理 getDerivedStateFromProps 声明周期 我们将 类的vnode 挂载到实例上
+  classInstance.ownVdom = vnode
   if (classInstance.componentWillMount) {
     classInstance.componentWillMount()
   }
@@ -195,13 +197,13 @@ export function compareTwoVDom (parentNode, oldVdom, newVdom, nextDom) {
     // 如果老没有 新有 创建dom节点
   } else if (!oldVdom && newVdom) {
     let newDom = initVNode(newVdom)
-    newVdom.dom = newVdom
     // 插入到下一个节点的前面
     if (nextDom) {
       parentNode.insertBefore(newDom)
     } else {
       parentNode.appendChild(newDom)
     }
+    newVdom.dom = newVdom
     return newDom
     // 新有 老有 更新
   } else {
@@ -251,6 +253,7 @@ function updateChildren (parentNode, oldVChildren, newVChildren) {
   oldVChildren = Array.isArray(oldVChildren) ? oldVChildren : [oldVChildren]
   newVChildren = Array.isArray(newVChildren) ? newVChildren : [newVChildren]
   let maxLength = Math.max(oldVChildren.length, newVChildren.length)
+  // 在真正的源码中 关键是key值得优化
   for (let i = 0; i < maxLength; i++) {
     // 找此虚拟dom对应的真实dom之后存在的真实dom
     let nextDom = oldVChildren.find((item, index) => index > i && item && item.dom)
