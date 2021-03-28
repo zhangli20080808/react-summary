@@ -1,4 +1,4 @@
-// import React from 'react'
+// import React, { Component } from 'react'
 // import ReactDOM from 'react-dom'
 
 import React, { Component } from './kreact'
@@ -56,8 +56,8 @@ class ChildCounter extends Component {
   render () {
     console.log('子组件 2. render ')
     return (
-      <div>
-        <p>{this.props.count}</p>
+      <div id='child-counter'>
+        {this.props.count}
       </div>
     )
   }
@@ -68,14 +68,14 @@ class ChildCounter extends Component {
  * 2. 如何实现组件更新
  * 3. 如何实现组件异步更新
  */
-class ClassCmp extends React.Component {
+class ClassCmpCounter extends React.Component {
   static defaultProps = {  // 初始化 默认属性
     name: 'zl'
   }
 
   constructor (props) {
     super(props)
-    this.a = React.createRef() // {current: null}
+    // this.a = React.createRef() // {current: null}
     this.state = {
       msg: 'something',
       number: 0
@@ -141,13 +141,9 @@ class ClassCmp extends React.Component {
   render () {
     console.log('父组件 render')
     return (
-      <div className='app'>
-        <p> Hello {this.props.name}</p>
-        {this.state.number}
-        {/*<input type="text" ref={this.a}/>*/}
-        <p>
-          {this.state.number === 4 ? null : <ChildCounter count={this.state.number}/>}
-        </p>
+      <div className={`counter-${this.state.number}`}>
+        <p>{this.state.number}</p>
+        {this.state.number === 4 ? null : <ChildCounter count={this.state.number}/>}
         <button onClick={this.handleClick}>测试event</button>
       </div>
     )
@@ -180,23 +176,25 @@ function FuncCmp (props) {
 //   </h1>
 // )
 
-const jsx = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'p',
-    null, '我是内容'
-  ),
-  React.createElement(FuncCmp, {
-    name: '我是function组件'
-  }),
-  React.createElement(ClassCmp, {
-    name: '我是class组件'
-  })
-)
+// const jsx = React.createElement(
+//   'div',
+//   null,
+//   React.createElement(
+//     'p',
+//     null, '我是内容'
+//   ),
+//   React.createElement(FuncCmp, {
+//     name: '我是function组件'
+//   }),
+//   React.createElement(ClassCmp, {
+//     name: '我是class组件'
+//   })
+// )
 // console.log(jsx, 'jsx')
+let element = <ClassCmpCounter/>
+// console.log(element)
 
-ReactDOM.render(jsx, document.getElementById('root'))
+ReactDOM.render(element, document.getElementById('root'))
 
 /*
 * 三个大接口  React.createElement() React.Component React.render

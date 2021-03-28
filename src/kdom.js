@@ -61,6 +61,8 @@ function createNativeElement (vnode) {
     node.textContent = props.children ? props.children.toString() : ''
   }
   if (ref) ref.current = node
+  // 让虚拟dom的dom属性 指定此虚拟dom创建出来的真实dom
+  vnode.dom = node
   return node
 }
 
@@ -145,26 +147,26 @@ function updateFuncComp (vnode) {
 function updateClassComp (vnode) {
   const { type, props } = vnode
   // class xxx  此处type是一个class
-  const comp = new type(props) // new Welcome({name:'zl'})
+  const classInstance = new type(props) // new Welcome({name:'zl'})
   // 注意 componentWillMount 这些生命周期函数 是实例的属性 不是类的属性
   // 让虚拟dom的实例=类组件的实例
-  vnode.classInstance = comp
-  if (comp.componentWillMount) {
-    comp.componentWillMount()
+  vnode.classInstance = classInstance
+  if (classInstance.componentWillMount) {
+    classInstance.componentWillMount()
   }
   //vNode 如何得到？ 调用组件自身的 render方法  得到一个虚拟dom或者说react元素
-  const newVNode = comp.render()  // <div class='app'>p childCounter button</div>
+  const renderVNode = classInstance.render()  // <div class='app'>p childCounter button</div>
   //一定要记住 要转化成真实节点
-  const dom = initVNode(newVNode)
+  const dom = initVNode(renderVNode)
   // 让类组件实例上挂载一个dom，指向类组件的真实dom ->  组件更新的时候会用到
   // 让类虚拟dom的dom属性和render方法返回的虚拟dom的dom属性都指向真实dom 记录真实dom
   // vnode.dom与 newVNode.dom的区别？  vnode -> {type: Welcome } newVNode-> {type:'div'}
-  vnode.dom = newVNode.dom = dom
+  vnode.dom = renderVNode.dom = dom
   // 让组件实例的老的VDom属性指向本次render出来的渲染
-  comp.oldVdom = newVNode
-  comp.dom = dom  // div
-  if (comp.componentDidMount) {
-    comp.componentDidMount()
+  classInstance.oldVdom = renderVNode
+  classInstance.dom = dom  // div
+  if (classInstance.componentDidMount) {
+    classInstance.componentDidMount()
   }
   return dom
 }
@@ -172,28 +174,33 @@ function updateClassComp (vnode) {
 /**
  * 找到老的虚拟dom和新的虚拟dom之间的差异，将相应的差异更新到真实dom上
  * @param parentNode 父的Dom节点
- * @param oldVDom 老的虚拟Dom
- * @param newVDom 新的虚拟Dom
+ * @param oldVdom 老的虚拟Dom
+ * @param newVdom 新的虚拟Dom
  */
-export function compareTwoVDom (parentNode, oldVDom, newVDom) {
-  if (oldVDom === null && newVDom === null) {
+export function compareTwoVDom (parentNode, oldVdom, newVdom) {
+  console.log(oldVdom, newVdom, 'compareTwoVDom')
+  // 老没有 新也没有 null
+  if (!oldVdom && !newVdom) {
     return null
   }
-  if (oldVDom && newVDom === null) {
-    let currentDom = oldVDom.dom // span
+  // 如果老有新没有 意味着此节点被删除
+  if (oldVdom && newVdom === null) {
+    let currentDom = oldVdom.dom // span
     parentNode.removeChild(currentDom)
     // 如果是个组件 执行卸载周期
-    if (oldVDom.classInstance && oldVDom.classInstance.componentWillMount) {
-      oldVDom.classInstance.componentWillMount()
+    if (oldVdom.classInstance && oldVdom.classInstance.componentWillMount) {
+      oldVdom.classInstance.componentWillMount()
     }
-  } else if (oldVDom === null && newVDom) {
-    let newDom = initVNode(newVDom) //
-    newVDom.dom = newVDom
+    // 如果老没有 新有 创建dom节点
+  } else if (!oldVdom && newVdom) {
+    let newDom = initVNode(newVdom)
+    newVdom.dom = newVdom
     parentNode.appendChild(newDom)
     return newDom
-  } else if (oldVDom && newVDom) {
-    domDiff(oldVDom, newVDom)
-    return newVDom
+    // 新有 老有 更新
+  } else {
+    domDiff(oldVdom, newVdom)
+    return newVdom
   }
 }
 
@@ -201,25 +208,54 @@ export function compareTwoVDom (parentNode, oldVDom, newVDom) {
  * 深度比较
  * dom diff 的一些规则约定 为了优化性能 有些假定条件
  * 1. 不考虑跨层级移动 只考虑一层 同一层级比较
- * 2.
- * @param oldVDom
- * @param newVDom
+ * @param oldVdom
+ * @param newVdom
  */
-function domDiff (oldVDom, newVDom) {
-  let currentDom = newVDom.dom = oldVDom.dom  // 获取老的真实dom
-  newVDom.classInstance = oldVDom.classInstance
-  if (typeof oldVDom.type === 'string') {
-    updateProps(currentDom, oldVDom.props, newVDom.props)
-    updateChildren(currentDom, oldVDom.props.children, newVDom.props.children)
-  } else if (typeof oldVDom.type === 'function') {
-    updateClassInstance(oldVDom, newVDom)
+function domDiff (oldVdom, newVdom) {
+  // 如果走到这里 则意味着我们要复用老的DOM节点了
+  console.log(oldVdom, newVdom,'domDiff')
+  let currentDom = newVdom.dom = oldVdom.dom  // 获取老的真实dom
+  console.log(typeof oldVdom.type)
+  newVdom.classInstance = oldVdom.classInstance
+  if (typeof oldVdom.type === 'string') { // div span
+    updateProps(currentDom, oldVdom.props, newVdom.props)
+    updateChildren(currentDom, oldVdom.props.children, newVdom.props.children)
+  } else if (typeof oldVdom.type === 'function') {
+    updateClassInstance(oldVdom, newVdom)
   }
 }
 
-function updateChildren (parentNode, oldVDom, newVDom) {
+/**
+ *
+ * @param parentNode 父的真实DOM
+ * @param oldVChildren 老的虚拟DOM儿子们
+ * @param newVChildren 新的虚拟DOM儿子们
+ */
+function updateChildren (parentNode, oldVChildren, newVChildren) {
+  console.log(newVChildren, 'newVChildren')
+  if ((typeof oldVChildren === 'string' || typeof oldVChildren === 'number')
+    &&
+    (typeof newVChildren === 'string' || typeof newVChildren === 'number')) {
 
+    if (oldVChildren !== newVChildren) {
+      parentNode.innerText = newVChildren
+    }
+    return
+  }
+  oldVChildren = Array.isArray(oldVChildren) ? oldVChildren : [oldVChildren]
+  newVChildren = Array.isArray(newVChildren) ? newVChildren : [newVChildren]
+  let maxLength = Math.max(oldVChildren.length, newVChildren.length)
+  for (let i = 0; i < maxLength; i++) {
+    compareTwoVDom(parentNode, oldVChildren[i], newVChildren[i])
+  }
 }
 
-function updateClassInstance (oldVDom, newVDom) {
-
+function updateClassInstance (oldVdom, newVdom) {
+  // 父组件更新的时候 会让子组件更新 执行 componentWillReceiveProps 不管属性变没变
+  let classInstance = oldVdom.classInstance
+  if (classInstance.componentWillReceiveProps) {
+    classInstance.componentWillReceiveProps()
+  }
+  // 把新的属性传递给 emitUpdate
+  classInstance.updater.emitUpdate(newVdom.props)
 }

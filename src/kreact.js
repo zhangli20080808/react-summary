@@ -34,20 +34,21 @@ class Updater {
     this.emitUpdate() // 所有的更新事件发射器 两个来源 点击事件 组件更新
   }
 
-  // TODO 实现组件的属性改变之后的更新
-  emitUpdate () {
-    updateQueue.isBatchingUpdate ? updateQueue.add(this) : this.updateComponent()
+  emitUpdate (newProps) {
+    this.nextProps = newProps
+    // 如果有新的属性拿到了，或者现在处于 非批量模式（ 异步更新模式），直接更新
+    this.nextProps || !updateQueue.isBatchingUpdate ? this.updateComponent() : updateQueue.add(this)
   }
 
   updateComponent () {
-    let { classInstance, pendingStates } = this
-    if (pendingStates.length > 0) {
+    let { classInstance, pendingStates, nextProps } = this
+    if (nextProps || pendingStates.length > 0) {
       // // 拿到组件的老状态和数组中的新状态数组进行合并
       // classInstance.state = this.getState()
       // // 让组件强制更新
       // classInstance.forceUpdate()
       // 无论是否真正更新页面，组件的state其实已经在this.getState的时候更新了
-      shouldUpdate(classInstance, this.getState())
+      shouldUpdate(classInstance, nextProps, this.getState())
     }
   }
 
@@ -153,39 +154,44 @@ export class Component {
     // updateClassComponent(this, renderVNode)
 
     let newVDom = this.render()
-    // oldVDom 就是render方法渲染得到的那个虚拟dom div
-    // this.oldVDom.dom.parentNode ->#root
-    // childCounter.dom.parentNode  => <div id='app'>
-    let currentVDom = compareTwoVDom(this.oldVDom.dom.parentNode, newVDom)
+    console.log(newVDom)
+    // console.log(this,'this')
+    // oldVdom 就是render方法渲染得到的那个虚拟dom div
+    // this.oldVdom.dom.parentNode ->#root
+    // childCounter.dom.parentNode  => <div id='counter'>
+    let currentVDom = compareTwoVDom(this.oldVdom.dom.parentNode, this.oldVdom, newVDom)
     // 每次更新完成后  最新的vdom会成为最新的上一次的vdom，等待下一次更新 这次的新的会成为下次的老的
-    this.oldVDom = currentVDom
+    // console.log(currentVDom,'currentVDom')
+    this.oldVdom = currentVDom
     if (this.componentDidUpdate) {
-      componentDidUpdate()
+      this.componentDidUpdate()
     }
   }
 }
 
-/**
- * 更新dom
- * @param classInstance
- * @param renderVNode
- */
-function updateClassComponent (classInstance, renderVNode) {
-  // 机械替换 后续换成diff
-  let oldDom = classInstance.dom
-  let newDom = initVNode(renderVNode)  // 真实dom
-  oldDom.parentNode.replaceChild(newDom, oldDom)
-  if (classInstance.componentDidUpdate) { // 更新结束
-    classInstance.componentDidUpdate()
-  }
-  classInstance.dom = newDom
-}
-
+// /**
+//  * 更新dom
+//  * @param classInstance
+//  * @param renderVNode
+//  */
+// function updateClassComponent (classInstance, renderVNode) {
+//   // 机械替换 后续换成diff
+//   let oldDom = classInstance.dom
+//   let newDom = initVNode(renderVNode)  // 真实dom
+//   oldDom.parentNode.replaceChild(newDom, oldDom)
+//   if (classInstance.componentDidUpdate) { // 更新结束
+//     classInstance.componentDidUpdate()
+//   }
+//   classInstance.dom = newDom
+// }
+//
 function createRef () {
   return { current: null }
 }
 
-function shouldUpdate (classInstance, nextState) {
+function shouldUpdate (classInstance, nextProps, nextState) {
+  // 如果有新属性传递过来 我们使用新属性
+  classInstance.props = nextProps || classInstance.props
   classInstance.state = nextState
   // 判断要不要更新 如果提供了 shouldComponentUpdate 并且他的返回值为 false 更新结束
   if (classInstance.shouldComponentUpdate && !classInstance.shouldComponentUpdate(classInstance.props, nextState)) {
