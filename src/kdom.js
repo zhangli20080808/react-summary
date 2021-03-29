@@ -187,7 +187,7 @@ export function compareTwoVDom (parentNode, oldVdom, newVdom, nextDom) {
     return null
   }
   // 如果老有新没有 意味着此节点被删除
-  if (oldVdom && newVdom === null) {
+  if (oldVdom && !newVdom) {
     let currentDom = oldVdom.dom // span
     parentNode.removeChild(currentDom)
     // 如果是个组件 执行卸载周期
@@ -205,8 +205,16 @@ export function compareTwoVDom (parentNode, oldVdom, newVdom, nextDom) {
     }
     newVdom.dom = newVdom
     return newDom
-    // 新有 老有 更新
+    // 如果类型不同 也不能复用 也需要把老的替换成新的
+  } else if (oldVdom && newVdom && oldVdom.type !== newVdom.type) {
+    let oldDom = oldVdom.dom
+    let newDom = initVNode(newVdom)
+    oldDom.parentNode.replaceChild(newDom, oldDom)
+    if (oldVdom.classInstance && oldVdom.classInstance.componentWillMount) {
+      oldVdom.classInstance.componentWillMount()
+    }
   } else {
+    // 新有 老有 更新
     domDiff(oldVdom, newVdom)
     return newVdom
   }

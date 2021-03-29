@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="feat: getDerivedStateFromProps">
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="feat: 类型不同 也不能复用逻辑处理">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kreact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kdom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kdom.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +141,7 @@
       <workItem from="1613304041192" duration="8266000" />
       <workItem from="1613373320017" duration="1357000" />
       <workItem from="1616316388725" duration="4181000" />
-      <workItem from="1616597461498" duration="27768000" />
+      <workItem from="1616597461498" duration="28690000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -319,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616944999505</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat: getSnapshotBeforeUpdate">
+      <created>1616946575057</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1616946575057</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,8 +344,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="hooks各种实现总结" />
-    <MESSAGE value="mobx实现 1" />
     <MESSAGE value="mobx实现 2" />
     <MESSAGE value="实现 react 核心 api" />
     <MESSAGE value="函数组件实现" />
@@ -363,7 +367,9 @@
     <MESSAGE value="feat: domDiff总结" />
     <MESSAGE value="feat: compareTwoVDom nextDom" />
     <MESSAGE value="feat: getDerivedStateFromProps" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: getDerivedStateFromProps" />
+    <MESSAGE value="feat: getSnapshotBeforeUpdate" />
+    <MESSAGE value="feat: 类型不同 也不能复用逻辑处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 类型不同 也不能复用逻辑处理" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
