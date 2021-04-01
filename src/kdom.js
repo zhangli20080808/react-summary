@@ -65,50 +65,6 @@ function createNativeElement (vnode) {
   vnode.dom = node
   return node
 }
-
-/**
- * 把虚拟Dom对象中的属性设置到真实Dom元素上
- * @param node dom元素
- * @param props 属性对象
- */
-function updateProps (node, props) {
-  const { key, children, ...rest } = props
-  Object.keys(rest).forEach((item) => {
-    // 需特殊处理的htmlFor，className,style
-    if (item === 'className') {
-      node.setAttribute('class', rest[item])
-    } else if (item === 'htmlFor') {
-      node.setAttribute('for', rest[item])
-    } else if (item === 'style') {
-      const styleObj = rest[item]
-      Object.keys(styleObj).forEach((cur) => {
-        node.style[cur] = styleObj[cur] // node.style.color = 'red'
-      })
-      // 点击事件 onClick
-    } else if (item.startsWith('on')) {
-      // node.onclick = onclick函数
-      // node[item.toLocaleLowerCase()] = props[item]
-      addEvent(node, item.toLocaleLowerCase(), rest[item])
-    } else {
-      node.setAttribute(item, rest[item])
-    }
-  })
-}
-
-/**
- * 把子节点从虚拟dom全部转成真实Dom并且插入到父节点去
- * @param children 子节点的虚拟Dom数组
- * @param parentNode 父节点的真实Dom
- */
-function reconcileChildren (children, parentNode) {
-  //递归子元素Node
-  if (children) {
-    children.forEach((childrenVNode) => {
-      ReactDom.render(childrenVNode, parentNode)
-    })
-  }
-}
-
 /**
  * 函数组件的渲染过程
  * @param vnode
@@ -124,8 +80,9 @@ function updateFuncComp (vnode) {
   const { type, props } = vnode
   // function   此处type是一个函数 newVNode 可能是一个原生虚拟dom，也可能是一个组件虚拟dom
   // 再返回一个函数组件也没关系 initVNode递归
-  const newVNode = type(props)
-  return initVNode(newVNode)
+  let renderVdom = type(props)
+  vnode.renderVdom = renderVdom
+  return initVNode(renderVdom)
 }
 
 /**
@@ -174,6 +131,50 @@ function updateClassComp (vnode) {
 }
 
 /**
+ * 把虚拟Dom对象中的属性设置到真实Dom元素上
+ * @param node dom元素
+ * @param props 属性对象
+ */
+function updateProps (node, props) {
+  const { key, children, ...rest } = props
+  Object.keys(rest).forEach((item) => {
+    // 需特殊处理的htmlFor，className,style
+    if (item === 'className') {
+      node.setAttribute('class', rest[item])
+    } else if (item === 'htmlFor') {
+      node.setAttribute('for', rest[item])
+    } else if (item === 'style') {
+      const styleObj = rest[item]
+      Object.keys(styleObj).forEach((cur) => {
+        node.style[cur] = styleObj[cur] // node.style.color = 'red'
+      })
+      // 点击事件 onClick
+    } else if (item.startsWith('on')) {
+      // node.onclick = onclick函数
+      // node[item.toLocaleLowerCase()] = props[item]
+      addEvent(node, item.toLocaleLowerCase(), rest[item])
+    } else {
+      node.setAttribute(item, rest[item])
+    }
+  })
+}
+
+/**
+ * 把子节点从虚拟dom全部转成真实Dom并且插入到父节点去
+ * @param children 子节点的虚拟Dom数组
+ * @param parentNode 父节点的真实Dom
+ */
+function reconcileChildren (children, parentNode) {
+  //递归子元素Node
+  if (children) {
+    children.forEach((childrenVNode) => {
+      ReactDom.render(childrenVNode, parentNode)
+    })
+  }
+}
+
+
+/**
  * 找到老的虚拟dom和新的虚拟dom之间的差异，将相应的差异更新到真实dom上
  * @param parentNode 父的Dom节点
  * @param oldVdom 老的虚拟Dom
@@ -181,7 +182,7 @@ function updateClassComp (vnode) {
  * @param nextDom 下一个节点
  */
 export function compareTwoVDom (parentNode, oldVdom, newVdom, nextDom) {
-  console.log(oldVdom, newVdom, 'compareTwoVDom')
+  // console.log(oldVdom, newVdom, 'compareTwoVDom')
   // 老没有 新也没有 null
   if (!oldVdom && !newVdom) {
     return null
@@ -198,8 +199,8 @@ export function compareTwoVDom (parentNode, oldVdom, newVdom, nextDom) {
   } else if (!oldVdom && newVdom) {
     let newDom = initVNode(newVdom)
     // 插入到下一个节点的前面
-    if (nextDom) {
-      parentNode.insertBefore(newDom)
+    if (nextDom) { // 如果有下一个弟弟dom的话，插到弟弟前面，
+      parentNode.insertBefore(newDom, nextDom)
     } else {
       parentNode.appendChild(newDom)
     }
@@ -229,16 +230,34 @@ export function compareTwoVDom (parentNode, oldVdom, newVdom, nextDom) {
  */
 function domDiff (oldVdom, newVdom) {
   // 如果走到这里 则意味着我们要复用老的DOM节点了
-  console.log(oldVdom, newVdom, 'domDiff')
-  let currentDom = newVdom.dom = oldVdom.dom  // 获取老的真实dom
-  console.log(typeof oldVdom.type)
-  newVdom.classInstance = oldVdom.classInstance
+  // console.log(oldVdom, newVdom, 'domDiff')
   if (typeof oldVdom.type === 'string') { // div span
+    let currentDom = newVdom.dom = oldVdom.dom  // 获取老的真实dom
     updateProps(currentDom, oldVdom.props, newVdom.props)
     updateChildren(currentDom, oldVdom.props.children, newVdom.props.children)
-  } else if (typeof oldVdom.type === 'function') {
-    updateClassInstance(oldVdom, newVdom)
+  } else if (typeof oldVdom.type === 'function') { // 类组件
+    if (oldVdom.vType === 3) {
+      newVdom.dom = oldVdom.dom
+      newVdom.classInstance = oldVdom.classInstance
+      updateClassInstance(oldVdom, newVdom)
+      // const { type, props } = vnode
+      // function   此处type是一个函数 newVNode 可能是一个原生虚拟dom，也可能是一个组件虚拟dom
+      // 再返回一个函数组件也没关系 initVNode递归
+      // const newVNode = type(props)
+      // return initVNode(newVNode)
+    } else {
+      updateFuncComponent(oldVdom, newVdom)
+    }
   }
+}
+
+function updateFuncComponent (oldVdom, newVdom) {
+  console.log(oldVdom, newVdom, 'updateFuncComponent')
+  let parentNode = oldVdom.renderVdom.dom.parentNode
+  let { type, props } = newVdom  // 获取新的虚拟组件
+  let newRenderVdom = type(props)
+  newVdom.renderVdom = newRenderVdom
+  updateChildren(parentNode, oldVdom.renderVdom, newRenderVdom)
 }
 
 /**

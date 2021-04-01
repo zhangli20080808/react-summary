@@ -81,6 +81,7 @@ class Updater {
  * @returns {{vType: number, type, props}} 虚拟dom，也就是我们的react元素
  */
 export function createElement (type, config, children) {
+  debugger
   // console.log( children) // 虚拟dom的创建是由内向外的
   let ref
   if (config) {
@@ -206,4 +207,22 @@ function shouldUpdate (classInstance, nextProps, nextState) {
   classInstance.forceUpdate()
 }
 
-export default { createElement, Component, createRef }
+export function createContext () {
+  let currentValue
+
+  function Provider (props) {
+    currentValue = props.value
+    return props.children
+  }
+
+  function Consumer (props) {
+    return props.children(currentValue)
+  }
+
+  return {
+    Provider,
+    Consumer
+  }
+}
+
+export default { createElement, Component, createRef, createContext }
