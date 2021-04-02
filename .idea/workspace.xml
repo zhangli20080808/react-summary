@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="feat: 类型不同 也不能复用逻辑处理">
-      <change afterPath="$PROJECT_DIR$/src/index2.js" afterDir="false" />
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment=" 函数组件更新过程">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/advancedUse/ContextDemo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/advancedUse/ContextDemo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kdom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kdom.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kreact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +141,7 @@
       <workItem from="1613304041192" duration="8266000" />
       <workItem from="1613373320017" duration="1357000" />
       <workItem from="1616316388725" duration="4181000" />
-      <workItem from="1616597461498" duration="36575000" />
+      <workItem from="1616597461498" duration="38388000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -336,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617028600408</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary=" 函数组件更新过程">
+      <created>1617287440140</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1617287440140</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +358,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mobx实现 2" />
     <MESSAGE value="实现 react 核心 api" />
     <MESSAGE value="函数组件实现" />
     <MESSAGE value="setState 同步更新" />
@@ -380,7 +382,8 @@
     <MESSAGE value="feat: getDerivedStateFromProps" />
     <MESSAGE value="feat: getSnapshotBeforeUpdate" />
     <MESSAGE value="feat: 类型不同 也不能复用逻辑处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 类型不同 也不能复用逻辑处理" />
+    <MESSAGE value=" 函数组件更新过程" />
+    <option name="LAST_COMMIT_MESSAGE" value=" 函数组件更新过程" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

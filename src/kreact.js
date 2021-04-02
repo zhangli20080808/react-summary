@@ -81,7 +81,6 @@ class Updater {
  * @returns {{vType: number, type, props}} 虚拟dom，也就是我们的react元素
  */
 export function createElement (type, config, children) {
-  debugger
   // console.log( children) // 虚拟dom的创建是由内向外的
   let ref
   if (config) {
@@ -199,12 +198,24 @@ function createRef () {
 function shouldUpdate (classInstance, nextProps, nextState) {
   // 如果有新属性传递过来 我们使用新属性
   classInstance.props = nextProps || classInstance.props
-  classInstance.state = nextState
   // 判断要不要更新 如果提供了 shouldComponentUpdate 并且他的返回值为 false 更新结束
   if (classInstance.shouldComponentUpdate && !classInstance.shouldComponentUpdate(classInstance.props, nextState)) {
+    classInstance.state = nextState
     return
   }
+  classInstance.state = nextState
   classInstance.forceUpdate()
+}
+
+function cloneElement (element, props, children) {
+  if (arguments.length > 3) {
+    children = Array.prototype.slice.call(arguments, 2)
+  }
+  props.children = children
+  return {
+    ...element,
+    props,
+  }
 }
 
 export function createContext () {
@@ -225,4 +236,17 @@ export function createContext () {
   }
 }
 
-export default { createElement, Component, createRef, createContext }
+export class PureComponents extends Component {
+  shouldComponentUpdate (newProps, nextState) {
+    let oldKeyLength = Object.keys(this.state).length
+    let newKeyLength = Object.keys(nextState).length
+    if (oldKeyLength !== newKeyLength) {
+      return true
+    }
+    for (let key in this.state) {
+      return this.state[key] !== nextState[key]
+    }
+  }
+}
+
+export default { createElement, Component, createRef, createContext, cloneElement, PureComponents }
