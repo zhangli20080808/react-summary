@@ -1,4 +1,4 @@
-// import React, { Component ,createContext} from 'react'
+// import React, { Component, createContext } from 'react'
 // import ReactDOM from 'react-dom'
 
 import React, { Component, createContext } from './kreact'
@@ -20,7 +20,6 @@ import { Provider } from 'react-redux'
 //
 // render(App)
 //
-
 
 // class ChildCounter extends Component {
 //   constructor (props) {
@@ -87,18 +86,18 @@ import { Provider } from 'react-redux'
  * 3. 如何实现组件异步更新
  */
 
-// function FuncCmp (props) {
-//   return (
-//     <div>name: {props.name}</div>
-//   )
-//   // build后
-//   return React.createElement(
-//     'div',
-//     null,
-//     'name: ',
-//     props.name
-//   )
-// }
+function FuncCmp (props) {
+  return (
+    <div>name: {props.name}</div>
+  )
+  // build后
+  return React.createElement(
+    'div',
+    null,
+    'name: ',
+    props.name
+  )
+}
 
 // 函数组件更新过程
 class Counter extends Component {
@@ -110,12 +109,17 @@ class Counter extends Component {
   }
 
   render () {
-    return <div id='counter'>
+    // ["counter:", 0]
+    let element = <div id='counter'>
+      {/*<p>counter:{this.state.number}</p>*/}
       <button onClick={() => this.setState({ number: this.state.number + 1 })}>
         +
       </button>
-      <ChildCounter1 number={this.state.number}/>
+      {/*<ChildCounter1 number={this.state.number}/>*/}
     </div>
+    console.log(element ,element.props.children[0].props.children)
+
+    return element
   }
 }
 
@@ -143,7 +147,6 @@ function ChildCounter1 (props) {
 //     name: '我是class组件'
 //   }),
 // )
-// console.log(jsx, 'jsx')
 
 // ReactDOM.render(element, document.getElementById('root'))
 ReactDOM.render(<Counter/>, document.getElementById('root'))

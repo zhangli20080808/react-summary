@@ -1,6 +1,15 @@
 import React from 'react'
 import { render } from '../../index'
 
+/**
+ * 1. useState 就是一个 hook
+ * 2. 通过在函数组件内调用他来给函数组件添加一些内部的状态，react会在重复渲染时保留这个state
+ * 3. useState 返回一对值，当前状态和一个让你更新他的函数，类似于 this.setState,但是他不会把新的
+ *    state和旧的state进行合并
+ * 4. useState的唯一参数就是初始 state
+ *    在初始渲染期间，返回的状态 与 传入的第一个参数值相同
+ *    setState函数用于更新state，他接受一个新的state并将组件的一次渲染加入队列
+ */
 // StateDemo 多次渲染 组件执行的时候 我们的状态需要保留  ——> memoizedState
 let memoizedStates = []
 let index = 0

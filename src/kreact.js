@@ -238,6 +238,7 @@ export function createContext () {
 
 export class PureComponents extends Component {
   shouldComponentUpdate (newProps, nextState) {
+    // newProps 也需要比较的
     let oldKeyLength = Object.keys(this.state).length
     let newKeyLength = Object.keys(nextState).length
     if (oldKeyLength !== newKeyLength) {

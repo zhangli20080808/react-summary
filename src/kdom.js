@@ -167,7 +167,9 @@ function updateProps (node, props) {
 function reconcileChildren (children, parentNode) {
   //递归子元素Node
   if (children) {
-    children.forEach((childrenVNode) => {
+    children.forEach((childrenVNode,index) => {
+      //  此dom在父亲身上的挂载索引 _mountIndex
+      childrenVNode._mountIndex = index
       ReactDom.render(childrenVNode, parentNode)
     })
   }

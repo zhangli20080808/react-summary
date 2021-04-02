@@ -24,9 +24,6 @@ let MyContent = React.createContext()
 
 // hooks 原理  https://github.com/brickspert/blog/issues/26
 
-
-
-
 //函数式更新
 function count () {
   let [num, setNum] = useState({ num: 0 })

@@ -7,7 +7,7 @@
 * useEffect 就是一个effect hooks 给函数增加了副作用的能力 跟类组件的 componentDidMount
 * componentDidUpdate componentWillMount 相同的用途，只不过合并成了一个API
 * */
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function EffectDemo () {
   let [state, setState] = useState({ number: 0 })
