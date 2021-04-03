@@ -1,8 +1,8 @@
-// import React, { Component, createContext } from 'react'
-// import ReactDOM from 'react-dom'
+import React, { Component, createContext } from 'react'
+import ReactDOM from 'react-dom'
 
-import React, { Component, createContext } from './kreact'
-import ReactDOM from './kreact-dom'
+// import React, { Component, createContext } from './kreact'
+// import ReactDOM from './kreact-dom'
 import { updateQueue } from './kreact'
 // import React from './kkreact'
 // import {render} from './kkreact/ReactDOM'
@@ -12,14 +12,16 @@ import { Provider } from 'react-redux'
 
 // import Mobx from './mobx/mobx'
 
-// export function render (Comp) {
-//   // ReactDOM.render(<Mobx />, document.getElementById('root'))
-//   // ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
-//   ReactDOM.render(<Comp/>, document.getElementById('root'))
-// }
-//
-// render(App)
-//
+export function render (Comp) {
+  // ReactDOM.render(<Mobx />, document.getElementById('root'))
+  ReactDOM.render(<Provider store={store}><Comp title="ok" /></Provider>, document.getElementById("root"));
+  // ReactDOM.render(<Comp/>, document.getElementById('root'))
+}
+
+render(App)
+// ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+
+
 
 // class ChildCounter extends Component {
 //   constructor (props) {
@@ -117,7 +119,6 @@ class Counter extends Component {
       </button>
       {/*<ChildCounter1 number={this.state.number}/>*/}
     </div>
-    console.log(element ,element.props.children[0].props.children)
 
     return element
   }
@@ -149,7 +150,7 @@ function ChildCounter1 (props) {
 // )
 
 // ReactDOM.render(element, document.getElementById('root'))
-ReactDOM.render(<Counter/>, document.getElementById('root'))
+// ReactDOM.render(<Counter/>, document.getElementById('root'))
 
 /*
 * 三个大接口  React.createElement() React.Component React.render

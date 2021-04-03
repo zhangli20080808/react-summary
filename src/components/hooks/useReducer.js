@@ -22,13 +22,12 @@ function init (initialArg) {
 }
 
 /*
+* useState的替代方案 ，接受一个 形如 (state,action)=>newState 的 reducer,并返回当前state以及配套的dispatch方法
 * 1. 区别  useReducer 是 useState 的内部实现 ->  useState是靠useReducer实现的
 * 2. 使用场景  改变状态的逻辑比较复杂的时候 或者 下一个状态依赖前一个状态的时候可以使用 useReducer
 * */
 
-// 自定义 useReducer
-
-
+// 自定义实现 useReducer
 let memoizedState
 
 function useReducer (reducer, initialArg, init) {

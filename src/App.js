@@ -28,7 +28,7 @@ import React, { useState, useEffect, Component } from 'react'
 // import RouterTest from './components/baseUse/RouterTest';
 // import MyRouterTest from './components/MyRouterTest';
 
-// import TestHook from './components/hooks';
+import TestHook from './components/hooks';
 // import EffectHook from './components/hooks/effect';
 // import UseStateDemo from './components/hooks/useState';
 // import UseReducerDemo from './components/hooks/useReducer';
@@ -101,7 +101,7 @@ function App () {
       {/*<UseReducerDemo/>*/}
       {/*<CustomerUseReducerDemo/>*/}
       {/*<CustomerUseStateLink/>*/}
-      {/*<TestHook/>*/}
+      <TestHook/>
       {/*<EffectHook/>*/}
       {/*<BaseUse />*/}
       {/*<Codemirror/>*/}

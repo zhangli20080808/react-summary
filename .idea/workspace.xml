@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="PureComponents">
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="useState理解总结">
+      <change afterPath="$PROJECT_DIR$/src/components/hooks/2.useCallback.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/hooks/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hooks/useRef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useRef.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hooks/useState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/useReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/useState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/1.useState.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kdom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kdom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kreact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +146,7 @@
       <workItem from="1613304041192" duration="8266000" />
       <workItem from="1613373320017" duration="1357000" />
       <workItem from="1616316388725" duration="4181000" />
-      <workItem from="1616597461498" duration="40312000" />
+      <workItem from="1616597461498" duration="49398000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -351,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617368152916</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="useState理解总结">
+      <created>1617371744655</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1617371744655</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +377,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="函数组件实现" />
     <MESSAGE value="setState 同步更新" />
     <MESSAGE value="setState 同步更新2" />
     <MESSAGE value="为每一个组件实例 配一个 updater实例" />
@@ -395,7 +401,8 @@
     <MESSAGE value="feat: 类型不同 也不能复用逻辑处理" />
     <MESSAGE value=" 函数组件更新过程" />
     <MESSAGE value="PureComponents" />
-    <option name="LAST_COMMIT_MESSAGE" value="PureComponents" />
+    <MESSAGE value="useState理解总结" />
+    <option name="LAST_COMMIT_MESSAGE" value="useState理解总结" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
