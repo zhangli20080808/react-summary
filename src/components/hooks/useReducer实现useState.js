@@ -11,7 +11,7 @@ import { render } from '../../index'
 let memoizedState
 
 function useReducer (reducer, initialArg, init) {
-  let initialState = void 0  // // void 跟上任意表达式返回的都是 undefined
+  let initialState = void 0   // void 跟上任意表达式返回的都是 undefined
 
   if (typeof init !== 'undefined') {
     initialState = init(initialArg)
@@ -31,7 +31,7 @@ function useReducer (reducer, initialArg, init) {
 }
 
 function useState (initialState) {
-  return useReducer((oldState, newState) => newState, initialState)
+  return useReducer((oldState = null, newState) => newState, initialState)
 }
 
 function StateDemo () {

@@ -30,6 +30,13 @@ function init (initialArg) {
 // 自定义实现 useReducer
 let memoizedState
 
+/**
+ *
+ * @param reducer 处理函数，状态变更函数 接受一个老的状态返回一个新的状态
+ * @param initialArg 初始值
+ * @param init 初始化函数 函数返回的结果 才是我们 useReducer 的 state  ->{number:0}  如果init存在 将 initialArg 传入返回新的值
+ * @returns {(*|dispatch)[]}
+ */
 function useReducer (reducer, initialArg, init) {
   let initialState = void 0  // // void 跟上任意表达式返回的都是 undefined
 

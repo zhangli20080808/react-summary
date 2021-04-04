@@ -219,21 +219,20 @@ function cloneElement (element, props, children) {
 }
 
 export function createContext () {
-  let currentValue
+  let context = { _currentValue: null }
 
   function Provider (props) {
-    currentValue = props.value
+    context._currentValue = props.value
     return props.children
   }
 
   function Consumer (props) {
-    return props.children(currentValue)
+    return props.children(context._currentValue)
   }
 
-  return {
-    Provider,
-    Consumer
-  }
+  context.Provider = Provider
+  context.Consumer = Consumer
+  return context
 }
 
 export class PureComponents extends Component {

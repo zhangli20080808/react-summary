@@ -9,17 +9,20 @@ import { updateQueue } from './kreact'
 import App from './App'
 import store from './store'
 import { Provider } from 'react-redux'
+import HookIndex from './components/hooks/index'
 
 // import Mobx from './mobx/mobx'
 
-export function render (Comp) {
+export function render () {
   // ReactDOM.render(<Mobx />, document.getElementById('root'))
-  ReactDOM.render(<Provider store={store}><Comp title="ok" /></Provider>, document.getElementById("root"));
+  ReactDOM.render(<Provider store={store}><HookIndex title="ok" /></Provider>, document.getElementById("root"));
   // ReactDOM.render(<Comp/>, document.getElementById('root'))
 }
 
-render(App)
+render()
 // ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+
+
 
 
 

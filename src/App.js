@@ -28,14 +28,15 @@ import React, { useState, useEffect, Component } from 'react'
 // import RouterTest from './components/baseUse/RouterTest';
 // import MyRouterTest from './components/MyRouterTest';
 
-import TestHook from './components/hooks';
+// import TestHook from './components/hooks';
+import UseState2 from './components/hooks/useState2';
 // import EffectHook from './components/hooks/effect';
 // import UseStateDemo from './components/hooks/useState';
 // import UseReducerDemo from './components/hooks/useReducer';
 
 // import CustomerUseReducerDemo from './components/hooks/useReducer实现useState';
 // import CustomerUseStateLink from './components/hooks/链表结构实现useState';
-import JsxDemo from './components/process/JsxDemo'
+// import JsxDemo from './components/process/JsxDemo'
 // import PhotoPreview from './components/Carousel3'
 // import Type from './components/typescript/app'
 
@@ -101,7 +102,8 @@ function App () {
       {/*<UseReducerDemo/>*/}
       {/*<CustomerUseReducerDemo/>*/}
       {/*<CustomerUseStateLink/>*/}
-      <TestHook/>
+      {/*<TestHook/>*/}
+      <UseState2/>
       {/*<EffectHook/>*/}
       {/*<BaseUse />*/}
       {/*<Codemirror/>*/}
