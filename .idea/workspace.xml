@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="usestate">
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/index2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/useContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/userEffect2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/竞态.js" afterDir="false" />
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="整合hook api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/hooks/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hooks/useReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hooks/useReducer实现useState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useReducer实现useState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hooks/useState2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useState2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hooks/userEffect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/userEffect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kreact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kreact.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +141,7 @@
       <workItem from="1613304041192" duration="8266000" />
       <workItem from="1613373320017" duration="1357000" />
       <workItem from="1616316388725" duration="4181000" />
-      <workItem from="1616597461498" duration="59212000" />
+      <workItem from="1616597461498" duration="61648000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -371,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617438868425</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="整合hook api">
+      <created>1617529652105</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1617529652105</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +386,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="setState 同步更新2" />
     <MESSAGE value="为每一个组件实例 配一个 updater实例" />
     <MESSAGE value="准备实现dispatchEvent" />
     <MESSAGE value="合成事件的意义" />
@@ -415,7 +410,8 @@
     <MESSAGE value="PureComponents" />
     <MESSAGE value="useState理解总结" />
     <MESSAGE value="usestate" />
-    <option name="LAST_COMMIT_MESSAGE" value="usestate" />
+    <MESSAGE value="整合hook api" />
+    <option name="LAST_COMMIT_MESSAGE" value="整合hook api" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
