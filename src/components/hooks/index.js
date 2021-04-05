@@ -48,6 +48,7 @@ function forwardRef(Comp){
  * @param ref
  */
 function FuncChild (props, ref) {
+  // 当这个虚拟input组件在挂载到页面之后会给ref.current=真实dom赋值
   return <input ref={ref}/>
 }
 
