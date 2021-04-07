@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script>
+
+  window.onpopstate = window.onpushstate = function (event) {
+    console.log(event)
+    root.innerHTML = window.location.pathname
+  }
+
+  class PushStateEvent {
+    constructor (state, pathname, type) {
+      this.state = state
+      this.pathname = pathname
+      this.type = type
+    }
+  }
+
+  (function (history) {
+    let oldPushState = history.pushState
+    history.pushState = function (state, title, pathname) {
+      let result = oldPushState.apply(history, arguments)
+      if (typeof window.onpushstate === 'function') {
+        window.onpushstate(new PushStateEvent(state, pathname, 'pushstate'))
+      }
+      return result
+    }
+
+  })(history)
+
+  setTimeout(() => {
+    history.pushState({ page: 1 }, { title: 'page1' }, '/page1')
+  }, 1000)
+  setTimeout(() => {
+    history.pushState({ page: 2 }, { title: 'page2' }, '/page2')
+  }, 2000)
+  setTimeout(() => {
+    history.pushState({ page: 3 }, { title: 'page3' }, '/page3')
+  }, 3000)
+  setTimeout(() => {
+    history.back()
+  }, 4000)
+  setTimeout(() => {
+    history.go(1)
+  }, 5000)
+
+</script>
+</html>

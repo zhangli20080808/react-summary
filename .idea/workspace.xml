@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="forwardRef">
+    <list default="true" id="7a59e5a8-5039-4b90-b70a-5d79a55c2b7f" name="Default Changelist" comment="ImperativeHandleDemo">
+      <change afterPath="$PROJECT_DIR$/public/browser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/hooks/event.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/hooks/forwardRef2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/hooks/useLayoutEffect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/hooks/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/hooks/useImperativeHandle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/useImperativeHandle.js" afterDir="false" />
@@ -17,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -142,7 +146,8 @@
       <workItem from="1613304041192" duration="8266000" />
       <workItem from="1613373320017" duration="1357000" />
       <workItem from="1616316388725" duration="4181000" />
-      <workItem from="1616597461498" duration="62621000" />
+      <workItem from="1616597461498" duration="67081000" />
+      <workItem from="1617797868397" duration="1609000" />
     </task>
     <task id="LOCAL-00001" summary="hooks各种实现总结">
       <created>1610803483090</created>
@@ -375,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617607299085</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="ImperativeHandleDemo">
+      <created>1617608309278</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1617608309278</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +406,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="准备实现dispatchEvent" />
     <MESSAGE value="合成事件的意义" />
     <MESSAGE value="实现合成事件的冒泡" />
     <MESSAGE value="ref 实现" />
@@ -419,7 +430,8 @@
     <MESSAGE value="usestate" />
     <MESSAGE value="整合hook api" />
     <MESSAGE value="forwardRef" />
-    <option name="LAST_COMMIT_MESSAGE" value="forwardRef" />
+    <MESSAGE value="ImperativeHandleDemo" />
+    <option name="LAST_COMMIT_MESSAGE" value="ImperativeHandleDemo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

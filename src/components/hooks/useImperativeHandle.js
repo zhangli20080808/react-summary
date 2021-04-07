@@ -13,6 +13,10 @@ import React, { useRef, forwardRef, useImperativeHandle } from 'react'
  * @type {React.ForwardRefExoticComponent<React.PropsWithoutRef<{}> & React.RefAttributes<unknown>>}
  */
 
+// function useImperativeHandle(ref,factory){
+//   ref.current = factory()
+// }
+
 const JMInput = forwardRef((props, ref) => {
   const inputRef = useRef()
   // 作用: 减少父组件获取的DOM元素属性,只暴露给父组件需要用到的DOM方法
