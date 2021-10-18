@@ -14,14 +14,14 @@ import RouterComp from './components/routerSumy/index'
 
 // import Mobx from './mobx/mobx'
 
-export function render () {
-  // ReactDOM.render(<Mobx />, document.getElementById('root'))
-  ReactDOM.render(<Provider store={store}><RouterComp title="ok" /></Provider>, document.getElementById("root"));
-  // ReactDOM.render(<Comp/>, document.getElementById('root'))
-}
-
-render()
-// ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+// export function render () {
+//   // ReactDOM.render(<Mobx />, document.getElementById('root'))
+//   ReactDOM.render(<Provider store={store}><RouterComp title="ok" /></Provider>, document.getElementById("root"));
+//   // ReactDOM.render(<Comp/>, document.getElementById('root'))
+// }
+//
+// render()
+ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
 
 
 

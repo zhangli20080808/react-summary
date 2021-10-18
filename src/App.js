@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from 'react'
 // import BaseUse from './components/baseUse';
 // import Codemirror from './components/codemirror';
 // import AdvancedUse from './components/advancedUse'
-// import ReduxUse from './components/reduxUse'
+import ReduxUse from './components/reduxUse'
 // import TodoList from './components/TodoLIst';
 // import Lifecycle from './components/baseUse/lifecycle';
 // import JsxTest from "./components/JsxTest";
@@ -29,7 +29,7 @@ import React, { useState, useEffect, Component } from 'react'
 // import MyRouterTest from './components/MyRouterTest';
 
 // import TestHook from './components/hooks';
-import UseState2 from './components/hooks/useState2';
+// import UseState2 from './components/hooks/useState2';
 // import EffectHook from './components/hooks/effect';
 // import UseStateDemo from './components/hooks/useState';
 // import UseReducerDemo from './components/hooks/useReducer';
@@ -103,12 +103,12 @@ function App () {
       {/*<CustomerUseReducerDemo/>*/}
       {/*<CustomerUseStateLink/>*/}
       {/*<TestHook/>*/}
-      <UseState2/>
+      {/*<UseState2/>*/}
       {/*<EffectHook/>*/}
       {/*<BaseUse />*/}
       {/*<Codemirror/>*/}
       {/* <AdvancedUse/> */}
-      {/* <ReduxUse/> */}
+       <ReduxUse/>
       {/* <TodoList /> */}
       {/* <JsxTest /> */}
       {/* 状态管理 */}
