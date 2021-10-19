@@ -10,7 +10,7 @@ import App from './App'
 import store from './store'
 import { Provider } from 'react-redux'
 // import HookIndex from './components/hooks/index'
-import RouterComp from './components/routerSumy/index'
+// import RouterComp from './components/routerSumy/index'
 
 // import Mobx from './mobx/mobx'
 

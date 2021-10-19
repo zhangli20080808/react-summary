@@ -79,3 +79,5 @@ export class Provider extends React.Component {
   }
 }
 
+
+export default()

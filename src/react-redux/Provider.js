@@ -1,11 +1,13 @@
 import React from 'react';
 
 import ReactReduxContext from './ReactReduxContext';
-
-export default function Provider(props) {
+import Subscription from './utils/Subscription';
+export default function Provider({ store, children }) {
+  let subscription = new Subscription();
+  let value = { store, subscription };
   return (
-    <ReactReduxContext.Provider value={props.store}>
-      {props.children}
+    <ReactReduxContext.Provider value={value}>
+      {children}
     </ReactReduxContext.Provider>
   );
 }
