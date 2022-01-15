@@ -3,7 +3,7 @@ import React, { useState, useEffect, Component } from "react";
 // import Codemirror from './components/codemirror';
 // import AdvancedUse from './components/advancedUse'
 // import ReduxUse from "./components/reduxUse";
-import RcFieldForm from "./components/rc-field-form";
+import RcFieldForm from "./components/rc-field-form/demo";
 // import TodoList from './components/TodoLIst';
 // import Lifecycle from './components/baseUse/lifecycle';
 // import JsxTest from "./components/JsxTest";

@@ -12,8 +12,14 @@ class FormStore {
   setFieldsValue = (newStore) => {
     this.store = { ...this.store, ...newStore };
   };
+  setFieldValue = (name, value) => {
+    this.store[name] = value;
+  };
   getFieldValue = (name) => {
     return this.store[name];
+  };
+  getFieldsValue = () => {
+    return this.store;
   };
   setCallbacks = (callbacks) => {
     this.callbacks = callbacks;
@@ -29,9 +35,12 @@ class FormStore {
   };
   getForm() {
     return {
-      getFieldsValue: this.getFieldValue,
+      setFieldValue: this.setFieldValue,
+      getFieldsValue: this.getFieldsValue,
+      getFieldValue: this.getFieldValue,
       setFieldsValue: this.setFieldsValue,
-      setCallbacks: this.callbacks,
+      setCallbacks: this.setCallbacks,
+      submit: this.submit,
     };
   }
 }

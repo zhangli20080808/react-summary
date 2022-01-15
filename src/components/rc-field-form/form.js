@@ -1,5 +1,5 @@
 import React from "react";
-import FiledContent from "./filedContent";
+import FiledContent from "./FiledContent";
 import useForm from "./useForm";
 /**
  *
@@ -8,7 +8,7 @@ import useForm from "./useForm";
  * initialValue 初始值
  */
 const Form = ({ initialValue, onFinish, children }) => {
-  const [formInstance] = useForm();
+  let [formInstance] = useForm();
   formInstance.setCallbacks({
     onFinish,
   });
@@ -26,5 +26,4 @@ const Form = ({ initialValue, onFinish, children }) => {
     </form>
   );
 };
-
 export default Form;

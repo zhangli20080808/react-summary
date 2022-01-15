@@ -9,6 +9,8 @@ import { updateQueue } from './kreact'
 import App from './App'
 import store from './store'
 import { Provider } from 'react-redux'
+import RcFieldForm from "./components/rc-field-form/demo";
+
 // import HookIndex from './components/hooks/index'
 // import RouterComp from './components/routerSumy/index'
 
@@ -21,7 +23,7 @@ import { Provider } from 'react-redux'
 // }
 //
 // render()
-ReactDOM.render(<Provider store={store}><App title="ok" /></Provider>, document.getElementById("root"));
+ReactDOM.render(<Provider store={store}><RcFieldForm title="ok" /></Provider>, document.getElementById("root"));
 
 
 

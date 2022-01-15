@@ -1,3 +1,3 @@
 import React from "react";
-let formFieldContent = React.createContext();
-export default formFieldContent;
+let FieldContent = React.createContext();
+export default FieldContent;
