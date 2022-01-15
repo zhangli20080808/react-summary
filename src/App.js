@@ -1,8 +1,9 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { useState, useEffect, Component } from "react";
 // import BaseUse from './components/baseUse';
 // import Codemirror from './components/codemirror';
 // import AdvancedUse from './components/advancedUse'
-import ReduxUse from './components/reduxUse'
+// import ReduxUse from "./components/reduxUse";
+import RcFieldForm from "./components/rc-field-form";
 // import TodoList from './components/TodoLIst';
 // import Lifecycle from './components/baseUse/lifecycle';
 // import JsxTest from "./components/JsxTest";
@@ -82,20 +83,21 @@ import ReduxUse from './components/reduxUse'
 //   )
 // }
 
-function App () {
-  const [time, setTime] = useState('test')
+function App() {
+  const [time, setTime] = useState("test");
   useEffect(() => {
     const timer = setTimeout(() => {
-      setTime('')
-    }, 2000)
+      setTime("");
+    }, 2000);
     return () => {
-      clearTimeout(timer)
-    }
-  }, [])
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div>
-    {/* <Type/> */}
+      <RcFieldForm />
+      {/* <Type/> */}
       {/* <Test/> */}
       {/*<JsxDemo/>*/}
       {/*<UseStateDemo/>*/}
@@ -108,7 +110,7 @@ function App () {
       {/*<BaseUse />*/}
       {/*<Codemirror/>*/}
       {/* <AdvancedUse/> */}
-       <ReduxUse/>
+      {/* <ReduxUse /> */}
       {/* <TodoList /> */}
       {/* <JsxTest /> */}
       {/* 状态管理 */}
@@ -148,7 +150,7 @@ function App () {
       {/* <MyRouterTest></MyRouterTest> */}
       {/* {time && <Lifecycle time={time} />} */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
