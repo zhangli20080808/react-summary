@@ -24,6 +24,9 @@ class FormStore {
   setCallbacks = (callbacks) => {
     this.callbacks = callbacks;
   };
+  setInitialValues = (initialValue, mounted) => {
+    if (!mounted) this.store = { ...initialValue };
+  };
   /**
    * 调用 onFinish 将 value传入
    */
@@ -40,6 +43,7 @@ class FormStore {
       getFieldValue: this.getFieldValue,
       setFieldsValue: this.setFieldsValue,
       setCallbacks: this.setCallbacks,
+      setInitialValues: this.setInitialValues,
       submit: this.submit,
     };
   }

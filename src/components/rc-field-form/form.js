@@ -12,6 +12,9 @@ const Form = ({ initialValue, onFinish, children }) => {
   formInstance.setCallbacks({
     onFinish,
   });
+  const mountRef = React.useRef(null);
+  formInstance.setInitialValues(initialValue, mountRef.current);
+  if (!mountRef.current) mountRef.current = true;
   return (
     <form
       onSubmit={(event) => {
