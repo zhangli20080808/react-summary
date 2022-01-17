@@ -11,6 +11,12 @@ import FieldContent from "./FiledContent";
  */
 class Field extends React.Component {
   static contextType = FieldContent;
+  componentDidMount(){
+    this.context.registerField(this)
+  }
+  storeChange = () => {
+    this.forceUpdate()
+  }
   getControlled = (childProps) => {
     const { getFieldValue, setFieldValue } = this.context; // formInstance
     const { name } = this.props;
