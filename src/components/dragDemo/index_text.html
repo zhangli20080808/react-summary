@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>drag test text</title>
+  <style>
+    #section {
+      background: green;
+      width: 300px;
+      height: 200px;
+      font-size: 16px;
+      padding: 20px;
+      cursor: move;
+    }
+  </style>
+</head>
+
+<body>
+  <!--拖拽对象-->
+  <div id="target">这是一行测试文字</div>
+  <!--投放区-->
+  <div id="section"></div>
+  <script>
+    var section = document.getElementById('section');
+    var target = document.getElementById('target');
+    var index = 0; //拖拽次数
+
+    target.ondragstart = function (event) {
+      var e = event || window.event;
+      index++;
+      e.dataTransfer.effectAllowed = 'move'; //此时样式已换成了move样式
+      e.dataTransfer.setData("num", index); //把拖拽的次数放进setData里边
+    };
+
+    section.ondragover = function (event) {
+      var e = event || window.event;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    };
+    section.ondrop = function (event) {
+      var e = event || window.event;
+      //获取系统自带的拖拽信息，如果不需要把样式也放进去， 可以把 text/html换成text/plain
+      var t = e.dataTransfer.getData('text/html');
+      var n = e.dataTransfer.getData('num');
+      section.innerHTML = t + "<br/>" + "拖拽的次数为：" + n;
+      e.dataTransfer.clearData(); //清除拖拽信息
+    };
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>drag text files</title>
+  <style>
+    #section {
+      background: green;
+      width: 300px;
+      height: 200px;
+      font-size: 16px;
+      padding: 20px;
+      cursor: move;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!--投放区-->
+  <div id="section">drag files into here</div>
+  <!--信息表-->
+  <table border="1" id="msg">
+    <tr>
+      <td>文件名</td>
+      <td>文件大小</td>
+      <td>文件类型</td>
+    </tr>
+  </table>
+  <script>
+    var msg = document.getElementById('msg');
+    var section = document.getElementById('section');
+
+    section.ondragover = function (event) {
+      var e = event || window.event;
+      e.preventDefault();
+      //拖拽元素进入投放区时，鼠标样式变为move
+      e.dataTransfer.dropEffect = 'move';
+    };
+    section.ondrop = function (event) {
+      var e = event || window.event;
+      e.preventDefault();
+      //拖拽元素进入投放区并投放时，显示文件样式          
+      for (var i = 0; i < e.dataTransfer.files.length; i++) {
+        var file = e.dataTransfer.files[i];
+        //如果想知道file属性里边有什么有用的字段，可以console.log(e.dataTransfer.files[i])
+        var html = "<tr><td>" + file.name + "</td><td>" + file.size + "</td><td>" + file.type + "</td></tr>";
+        msg.innerHTML += html;
+      }
+
+      section.style.border = '1px solid #562356 ';
+    };
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DragTest</title>
+  <style>
+    .container {
+      width: 300px;
+      height: 300px;
+      background: #ccc;
+    }
+
+    .item {
+      width: 200px;
+      height: 100px;
+      background: #0f0;
+    }
+
+    .dragOver {
+      background: rgba(255, 0, 0, 0.5);
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <a href="http://www.w3school.com.cn">W3School</a> -->
+  <div class="container" id='container' ondragleave="dragleave(event)" ondrop="drop(event)"
+    ondragover="dragover(event)" ondragend="dragend(event)">dropZone</div>
+  <div class="item" draggable="true" ondragstart="dragStart(event)" id="item">
+    draggable
+  </div>
+  <img src="logo.png" class="hidden" />
+  <script>
+    function dragStart(e) {
+      e.dataTransfer.setData('id', e.target.id);
+      var image = document.querySelector('img').cloneNode();
+      image.classList.remove('hidden');
+      e.dataTransfer.setData('testData', '11111111111111111111111111');
+      console.log('>>>>start e.dataTransfer', e.dataTransfer.types);
+
+      // e.dataTransfer.effectAllowed = 'move';
+      // setDragImage
+      e.dataTransfer.setDragImage(image, 15, 15);
+    }
+
+    function drop(e) {
+      e.preventDefault();
+      var id = e.dataTransfer.getData('id');
+      e.target.appendChild(document.getElementById(id));
+      var testData = e.dataTransfer.getData('testData');
+      console.log('>>>>drop e.dataTransfer', testData);
+    }
+
+    function dragover(e) {
+      e.preventDefault();
+      // e.dataTransfer.dropEffect = 'move';
+      e.target.classList.add('dragOver');
+    }
+    
+    function dragend(e) {
+    }
+    function dragleave(e) {
+      console.log('leave');
+      e.target.classList.remove('dragOver');
+      console.log('>>>>dragleave e.dataTransfer', e.dataTransfer.types);
+    }
+  </script>
+</body>
+
+</html>
