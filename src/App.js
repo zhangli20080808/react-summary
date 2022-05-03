@@ -37,7 +37,9 @@ import React, { useState, useEffect, Component } from "react";
 
 // import CustomerUseReducerDemo from './components/hooks/useReducer实现useState';
 // import CustomerUseStateLink from './components/hooks/链表结构实现useState';
-// import JsxDemo from './components/process/JsxDemo'
+import JsxDemo from './components/process/JsxDemo'
+import Tree from './components/process/tree'
+
 // import PhotoPreview from './components/Carousel3'
 // import Type from './components/typescript/app'
 
@@ -99,7 +101,8 @@ function App() {
       {/* <RcFieldForm /> */}
       {/* <Type/> */}
       {/* <Test/> */}
-      {/*<JsxDemo/>*/}
+      {/* <JsxDemo/> */}
+      <Tree/>
       {/*<UseStateDemo/>*/}
       {/*<UseReducerDemo/>*/}
       {/*<CustomerUseReducerDemo/>*/}

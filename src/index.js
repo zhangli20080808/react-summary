@@ -23,7 +23,7 @@ import RcFieldForm from "./components/rc-field-form/demo";
 // }
 //
 // render()
-ReactDOM.render(<Provider store={store}><RcFieldForm title="ok" /></Provider>, document.getElementById("root"));
+ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("root"));
 
 
 
